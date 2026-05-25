@@ -57,7 +57,7 @@ export function JourneyTabs({
   const [active, setActive] = useState<Tab>("About");
 
   return (
-    <section id="journey" className="py-16 px-4" style={{ background: "#f5e8d0" }}>
+    <section id="journey" className="pt-10 pb-16 px-4" style={{ background: "#f5e8d0" }}>
       <div className="max-w-3xl mx-auto">
 
         {/* Tab bar — pill bubbles, centered natural flow */}
@@ -81,10 +81,7 @@ export function JourneyTabs({
         </div>
 
         {/* Divider */}
-        <div className="mb-10 space-y-2">
-          <div className="w-full h-px" style={{ background: "linear-gradient(to right, transparent, rgba(196,98,45,0.6) 50%, transparent)" }} />
-          <div className="w-full h-px" style={{ background: "linear-gradient(to right, transparent, rgba(196,98,45,0.2) 50%, transparent)" }} />
-        </div>
+        <div className="mb-10" style={{ height: "3px", background: "linear-gradient(to right, transparent, rgba(196,98,45,0.7) 50%, transparent)", borderRadius: "9999px" }} />
 
         {/* About */}
         {active === "About" && (
