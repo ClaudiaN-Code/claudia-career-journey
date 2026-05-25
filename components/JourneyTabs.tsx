@@ -6,6 +6,7 @@ import { Milestone } from "./Milestone";
 import { MotionMilestone } from "./MotionMilestone";
 import recommendationsData from "@/data/recommendations.json";
 import postsData from "@/data/posts.json";
+import resumeData from "@/data/resume.json";
 
 const TABS = ["About", "Professional History", "Skills & Tools", "Clients", "Recommendations", "Writing", "Contact"] as const;
 type Tab = (typeof TABS)[number];
@@ -41,7 +42,6 @@ interface JourneyTabsProps {
   certifications: string[];
   languages: string[];
   clients: { b2b: string[]; b2c: string[] };
-  resumePdf?: boolean | null;
 }
 
 export function JourneyTabs({
@@ -54,9 +54,9 @@ export function JourneyTabs({
   certifications,
   languages,
   clients,
-  resumePdf,
 }: JourneyTabsProps) {
   const [active, setActive] = useState<Tab>("About");
+  const resumePdfEnabled = !!(resumeData as typeof resumeData & { resumePdf?: boolean | null }).resumePdf;
 
   return (
     <section id="journey" className="pt-10 pb-16 px-4" style={{ background: "#f5e8d0" }}>
@@ -522,7 +522,7 @@ export function JourneyTabs({
                 </div>
               )}
 
-              {resumePdf && (
+              {resumePdfEnabled && (
                 <a
                   href="/resume.pdf"
                   download

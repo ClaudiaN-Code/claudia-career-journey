@@ -5,7 +5,7 @@ import { JourneyTabs } from "@/components/JourneyTabs";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
-  const { name, headline, tagline, summary, contact, links, experience, skills, education, certifications, languages, clients, resumePdf } = resumeData as typeof resumeData & { tagline?: string; clients?: { b2b: string[]; b2c: string[] }; resumePdf?: boolean | null };
+  const { name, headline, tagline, summary, contact, links, experience, skills, education, certifications, languages, clients } = resumeData as typeof resumeData & { tagline?: string; clients?: { b2b: string[]; b2c: string[] } };
 
   return (
     <>
@@ -26,7 +26,6 @@ export default function Home() {
         certifications={certifications ?? []}
         languages={languages ?? []}
         clients={clients ?? { b2b: [], b2c: [] }}
-        resumePdf={resumePdf}
       />
       <Footer
         name={name}
