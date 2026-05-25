@@ -66,10 +66,10 @@ export function JourneyTabs({
             <motion.button
               key={tab}
               onClick={() => setActive(tab)}
-              whileHover={{ scale: 1.08 }}
+              whileHover={{ scale: 1.14, y: -4, boxShadow: "0 8px 20px rgba(26,20,16,0.35)" }}
               whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.15 }}
-              className="px-4 py-1.5 rounded-full text-xs font-semibold transition-colors"
+              transition={{ type: "spring", stiffness: 500, damping: 22 }}
+              className="px-4 py-1.5 rounded-full text-xs font-semibold cursor-pointer"
               style={{
                 background: active === tab ? "#c4622d" : "#1a1410",
                 color: "#faf9f6",
