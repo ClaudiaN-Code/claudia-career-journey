@@ -70,10 +70,10 @@ export function JourneyTabs({
               <motion.button
                 key={tab}
                 onClick={() => setActive(tab)}
-                whileHover={{ y: -3, scale: 1.08 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 22 }}
-                className="relative shrink-0 pb-3 text-sm font-medium whitespace-nowrap cursor-pointer transition-colors"
+                whileHover={{ y: -5, scale: 1.13, color: "#c4622d" }}
+                whileTap={{ scale: 0.96 }}
+                transition={{ type: "spring", stiffness: 380, damping: 18 }}
+                className="relative shrink-0 pb-3 text-sm font-medium whitespace-nowrap cursor-pointer"
                 style={{ color: active === tab ? "#c4622d" : "#6b5a4a" }}
               >
                 {tab}
