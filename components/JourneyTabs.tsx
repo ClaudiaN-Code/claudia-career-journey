@@ -41,6 +41,7 @@ interface JourneyTabsProps {
   certifications: string[];
   languages: string[];
   clients: { b2b: string[]; b2c: string[] };
+  resumePdf?: boolean | null;
 }
 
 export function JourneyTabs({
@@ -53,6 +54,7 @@ export function JourneyTabs({
   certifications,
   languages,
   clients,
+  resumePdf,
 }: JourneyTabsProps) {
   const [active, setActive] = useState<Tab>("About");
 
@@ -518,6 +520,18 @@ export function JourneyTabs({
                   <span className="text-[#c4622d] text-xs">📍</span>
                   <span className="text-[#1a1410] text-sm font-medium">{contact.location}</span>
                 </div>
+              )}
+
+              {resumePdf && (
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="flex items-center gap-2.5 rounded-full border border-[#c4622d]/40 px-4 py-2.5 hover:bg-[#c4622d] hover:border-[#c4622d] transition-all group"
+                  style={{ background: "rgba(196,98,45,0.08)" }}
+                >
+                  <span className="text-[#c4622d] group-hover:text-white text-xs transition-colors">↓</span>
+                  <span className="text-[#c4622d] group-hover:text-white text-sm font-medium transition-colors">Download Resume</span>
+                </a>
               )}
             </div>
           </div>

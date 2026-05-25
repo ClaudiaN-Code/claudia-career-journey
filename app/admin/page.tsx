@@ -6,7 +6,7 @@ import resumeRaw from "@/data/resume.json";
 import recsRaw from "@/data/recommendations.json";
 import postsRaw from "@/data/posts.json";
 
-type Tab = "Profile" | "Contact" | "Skills" | "Experience" | "Recommendations" | "Writing";
+type Tab = "Profile" | "Contact" | "Skills" | "Experience" | "Recommendations" | "Writing" | "Resume PDF";
 
 type SaveStatus = "idle" | "saving" | "saved" | "error";
 
@@ -487,6 +487,110 @@ function WritingSection() {
   );
 }
 
+// ── RESUME PDF SECTION ────────────────────────────────────────────────────────
+function ResumePdfSection({ resume, setResume }: { resume: typeof resumeRaw; setResume: (r: typeof resumeRaw) => void }) {
+  const [uploadStatus, setUploadStatus] = useState<"idle" | "uploading" | "done" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+  const [removeStatus, setRemoveStatus] = useState<SaveStatus>("idle");
+  const hasResume = !!(resume as typeof resumeRaw & { resumePdf?: boolean | null }).resumePdf;
+
+  async function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadStatus("uploading");
+    setErrorMsg("");
+    const form = new FormData();
+    form.append("file", file);
+    const res = await fetch("/api/admin/upload-resume", { method: "POST", body: form });
+    if (res.ok) {
+      setUploadStatus("done");
+      setResume({ ...resume, resumePdf: true } as unknown as typeof resumeRaw);
+      setTimeout(() => setUploadStatus("idle"), 5000);
+    } else {
+      const err = await res.json();
+      setErrorMsg(err.error ?? "Upload failed");
+      setUploadStatus("error");
+    }
+    e.target.value = "";
+  }
+
+  async function handleRemove() {
+    if (!confirm("This will hide the download button. The PDF file stays in GitHub until you overwrite it. Continue?")) return;
+    setRemoveStatus("saving");
+    const err = await saveToGitHub("data/resume.json", { ...resume, resumePdf: null }, "Admin: hide resume download");
+    if (err) {
+      setRemoveStatus("error");
+    } else {
+      setRemoveStatus("saved");
+      setResume({ ...resume, resumePdf: null } as unknown as typeof resumeRaw);
+      setTimeout(() => setRemoveStatus("idle"), 4000);
+    }
+  }
+
+  return (
+    <div className="space-y-6">
+      <h2 className="text-lg font-bold text-[#faf9f6]">Resume PDF</h2>
+      <p className="text-sm" style={{ color: "#7a6a5a" }}>
+        Upload a PDF resume. Once uploaded, a &ldquo;Download Resume&rdquo; button appears on your Contact tab. The file is stored at{" "}
+        <code className="text-[#c4622d] text-xs">/resume.pdf</code> in your public folder.
+      </p>
+
+      <div
+        className="rounded-xl p-5 space-y-4"
+        style={{ background: "#2a2018", border: "1px solid #3a2e22" }}
+      >
+        <div className="flex items-center gap-3">
+          <div
+            className="w-2 h-2 rounded-full"
+            style={{ background: hasResume ? "#2a7a2a" : "#7a6a5a" }}
+          />
+          <span className="text-sm text-[#faf9f6]">
+            {hasResume ? "Resume is published — download button is visible" : "No resume published yet"}
+          </span>
+        </div>
+
+        <div>
+          <label
+            className="inline-block px-5 py-2.5 rounded-lg text-sm font-semibold text-white cursor-pointer transition-colors"
+            style={{ background: uploadStatus === "uploading" ? "#7a6a5a" : "#c4622d" }}
+          >
+            {uploadStatus === "uploading" ? "Uploading…" : uploadStatus === "done" ? "Uploaded ✓" : "Choose PDF to upload"}
+            <input
+              type="file"
+              accept="application/pdf"
+              className="hidden"
+              onChange={handleUpload}
+              disabled={uploadStatus === "uploading"}
+            />
+          </label>
+          {uploadStatus === "error" && (
+            <p className="text-red-400 text-xs mt-2">{errorMsg}</p>
+          )}
+          {uploadStatus === "done" && (
+            <p className="text-green-400 text-xs mt-2">
+              Uploaded! Your site will redeploy in ~2 minutes with the download button live.
+            </p>
+          )}
+        </div>
+      </div>
+
+      {hasResume && (
+        <div className="flex items-center gap-4">
+          <button
+            onClick={handleRemove}
+            disabled={removeStatus === "saving"}
+            className="px-5 py-2 rounded-lg text-sm font-semibold transition-colors disabled:opacity-60"
+            style={{ background: removeStatus === "saved" ? "#2a7a2a" : "#3a2018", color: "#a09080", border: "1px solid #3a2e22" }}
+          >
+            {removeStatus === "saving" ? "Hiding…" : removeStatus === "saved" ? "Hidden ✓" : "Hide download button"}
+          </button>
+          <SectionNote />
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── ROOT PAGE ─────────────────────────────────────────────────────────────────
 export default function AdminPage() {
   const [active, setActive] = useState<Tab>("Profile");
@@ -499,7 +603,7 @@ export default function AdminPage() {
     router.refresh();
   }
 
-  const TABS: Tab[] = ["Profile", "Contact", "Skills", "Experience", "Recommendations", "Writing"];
+  const TABS: Tab[] = ["Profile", "Contact", "Skills", "Experience", "Recommendations", "Writing", "Resume PDF"];
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#1a1410", color: "#faf9f6" }}>
@@ -542,6 +646,7 @@ export default function AdminPage() {
           {active === "Experience" && <ExperienceSection resume={resume} setResume={setResume} />}
           {active === "Recommendations" && <RecommendationsSection />}
           {active === "Writing" && <WritingSection />}
+          {active === "Resume PDF" && <ResumePdfSection resume={resume} setResume={setResume} />}
         </main>
       </div>
     </div>
