@@ -24,11 +24,11 @@ export function Hero({ name, headline, tagline, linkedin }: HeroProps) {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-8 md:px-16 pt-28 pb-20">
-        <div className="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-16 pt-20 md:pt-28 pb-16 md:pb-20">
+        <div className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-20">
 
           {/* Left — text */}
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 text-center md:text-left">
             <p className="text-[#c4622d] font-medium text-sm tracking-widest uppercase mb-5">
               Career Journey
             </p>
@@ -53,7 +53,7 @@ export function Hero({ name, headline, tagline, linkedin }: HeroProps) {
               </p>
             )}
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               {linkedin && (
                 <a
                   href={linkedin.startsWith("http") ? linkedin : `https://${linkedin}`}
@@ -81,7 +81,7 @@ export function Hero({ name, headline, tagline, linkedin }: HeroProps) {
           <div className="flex-shrink-0 flex items-center justify-center">
             <div
               className="relative"
-              style={{ width: "clamp(240px, 30vw, 420px)", aspectRatio: "3/4" }}
+              style={{ width: "clamp(160px, 55vw, 420px)", aspectRatio: "3/4", maxHeight: "45vh" }}
             >
               {/* Glow ring behind photo */}
               <div

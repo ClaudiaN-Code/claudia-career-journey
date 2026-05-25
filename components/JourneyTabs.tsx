@@ -61,12 +61,12 @@ export function JourneyTabs({
       <div className="max-w-3xl mx-auto">
 
         {/* Tab bar */}
-        <div className="flex justify-between w-full border-b border-[#d4c4b0] mb-12">
+        <div className="flex overflow-x-auto scrollbar-none border-b border-[#d4c4b0] mb-12 gap-1">
           {TABS.map((tab) => (
             <button
               key={tab}
               onClick={() => setActive(tab)}
-              className={`px-2 py-3 text-sm font-medium transition-all border-b-2 -mb-px whitespace-nowrap ${
+              className={`flex-shrink-0 px-3 py-3 text-sm font-medium transition-all border-b-2 -mb-px whitespace-nowrap ${
                 active === tab
                   ? "border-[#c4622d] text-[#c4622d]"
                   : "border-transparent text-[#6b5a4a] hover:text-[#1a1410]"
