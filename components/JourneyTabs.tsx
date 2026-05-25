@@ -69,7 +69,7 @@ export function JourneyTabs({
               whileHover={{ scale: 1.08 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.15 }}
-              className="px-5 py-2 rounded-full text-sm font-semibold transition-colors"
+              className="px-4 py-1.5 rounded-full text-xs font-semibold transition-colors"
               style={{
                 background: active === tab ? "#c4622d" : "#1a1410",
                 color: "#faf9f6",
