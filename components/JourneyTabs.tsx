@@ -60,18 +60,21 @@ export function JourneyTabs({
     <section id="journey" className="py-16 px-4" style={{ background: "#f5e8d0" }}>
       <div className="max-w-3xl mx-auto">
 
-        {/* Tab bar — outer div constrains width in WebKit, inner div scrolls */}
-        <div className="w-full mb-12" style={{ overflow: "hidden" }}>
-          <div className="flex border-b border-[#d4c4b0] gap-1 scrollbar-none" style={{ overflowX: "auto", WebkitOverflowScrolling: "touch" } as React.CSSProperties}>
-            {TABS.map((tab) => (
+        {/* Tab bar — 2 rows on mobile (4+3), single row on desktop */}
+        <div className="w-full mb-12 overflow-hidden border-b border-[#d4c4b0]">
+          <div className="flex flex-wrap md:flex-nowrap md:overflow-x-auto scrollbar-none">
+            {TABS.map((tab, i) => (
               <button
                 key={tab}
                 onClick={() => setActive(tab)}
-                className={`flex-shrink-0 px-3 py-3 text-sm font-medium transition-all border-b-2 -mb-px whitespace-nowrap ${
-                  active === tab
+                className={`text-center font-medium transition-all border-b-2 -mb-px leading-tight
+                  py-2.5 text-[11px] px-1
+                  md:px-3 md:py-3 md:text-sm md:whitespace-nowrap md:flex-shrink-0 md:w-auto
+                  ${i < 4 ? "w-1/4" : "w-1/3"}
+                  ${active === tab
                     ? "border-[#c4622d] text-[#c4622d]"
                     : "border-transparent text-[#6b5a4a] hover:text-[#1a1410]"
-                }`}
+                  }`}
               >
                 {tab}
               </button>
