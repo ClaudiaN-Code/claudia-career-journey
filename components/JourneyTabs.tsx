@@ -503,7 +503,7 @@ export function JourneyTabs({
                 </a>
               )}
 
-              {false && contact.phone && (
+              {contact.phone && (
                 <a
                   href={`tel:${contact.phone}`}
                   className="flex items-center gap-2.5 rounded-full border border-[#e8ddd0] bg-white/60 px-4 py-2.5 hover:border-[#c4622d]/40 hover:bg-white transition-all"
