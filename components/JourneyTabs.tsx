@@ -60,28 +60,35 @@ export function JourneyTabs({
     <section id="journey" className="pt-10 pb-16 px-4" style={{ background: "#f5e8d0" }}>
       <div className="max-w-3xl mx-auto">
 
-        {/* Tab bar — pill bubbles, centered natural flow */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
-          {TABS.map((tab) => (
-            <motion.button
-              key={tab}
-              onClick={() => setActive(tab)}
-              whileHover={{ scale: 1.14, y: -4, boxShadow: "0 8px 20px rgba(26,20,16,0.35)" }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 500, damping: 22 }}
-              className="px-4 py-1.5 rounded-full text-xs font-semibold cursor-pointer"
-              style={{
-                background: active === tab ? "#c4622d" : "#1a1410",
-                color: "#faf9f6",
-              }}
-            >
-              {tab}
-            </motion.button>
-          ))}
+        {/* Tab bar — underline style */}
+        <div className="pt-2">
+          <div
+            className="flex gap-6 md:gap-0 md:justify-between overflow-x-auto scrollbar-none border-b mb-10"
+            style={{ borderColor: "#d4c4b0" }}
+          >
+            {TABS.map((tab) => (
+              <motion.button
+                key={tab}
+                onClick={() => setActive(tab)}
+                whileHover={{ y: -3, scale: 1.08 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 22 }}
+                className="relative shrink-0 pb-3 text-sm font-medium whitespace-nowrap cursor-pointer transition-colors"
+                style={{ color: active === tab ? "#c4622d" : "#6b5a4a" }}
+              >
+                {tab}
+                {active === tab && (
+                  <motion.div
+                    layoutId="tab-underline"
+                    className="absolute bottom-0 left-0 right-0 z-10"
+                    style={{ height: "2px", background: "#c4622d", borderRadius: "9999px" }}
+                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                  />
+                )}
+              </motion.button>
+            ))}
+          </div>
         </div>
-
-        {/* Divider */}
-        <div className="mb-10" style={{ height: "3px", background: "linear-gradient(to right, transparent, rgba(196,98,45,0.7) 50%, transparent)", borderRadius: "9999px" }} />
 
         {/* About */}
         {active === "About" && (
