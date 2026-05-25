@@ -81,7 +81,11 @@ export function JourneyTabs({
         </div>
 
         {/* Divider */}
-        <div className="border-t border-[#d4c4b0] mb-10" />
+        <div className="flex items-center gap-3 mb-10">
+          <div className="flex-1 border-t-2 border-[#c4622d]/20" />
+          <div className="w-1.5 h-1.5 rounded-full bg-[#c4622d]/30" />
+          <div className="flex-1 border-t-2 border-[#c4622d]/20" />
+        </div>
 
         {/* About */}
         {active === "About" && (
