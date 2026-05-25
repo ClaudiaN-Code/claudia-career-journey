@@ -60,20 +60,40 @@ export function JourneyTabs({
     <section id="journey" className="pt-10 pb-16 px-4" style={{ background: "#f5e8d0" }}>
       <div className="max-w-3xl mx-auto">
 
-        {/* Tab bar — underline style */}
-        <div className="pt-2">
+        {/* Mobile: black pill bubbles */}
+        <div className="flex flex-wrap justify-center gap-2 mb-6 md:hidden">
+          {TABS.map((tab) => (
+            <motion.button
+              key={`mob-${tab}`}
+              onClick={() => setActive(tab)}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.15 }}
+              className="px-4 py-1.5 rounded-full text-xs font-semibold cursor-pointer"
+              style={{
+                background: active === tab ? "#c4622d" : "#1a1410",
+                color: "#faf9f6",
+              }}
+            >
+              {tab}
+            </motion.button>
+          ))}
+        </div>
+        <div className="mb-8 md:hidden" style={{ height: "2px", background: "linear-gradient(to right, transparent, rgba(196,98,45,0.5) 50%, transparent)", borderRadius: "9999px" }} />
+
+        {/* Desktop: underline tabs with hover animation */}
+        <div className="pt-2 hidden md:block">
           <div
-            className="flex gap-6 md:gap-0 md:justify-between overflow-x-auto scrollbar-none border-b mb-10"
+            className="flex justify-between border-b mb-10"
             style={{ borderColor: "#d4c4b0" }}
           >
             {TABS.map((tab) => (
               <motion.button
-                key={tab}
+                key={`desk-${tab}`}
                 onClick={() => setActive(tab)}
                 whileHover={{ y: -5, scale: 1.13, color: "#c4622d" }}
                 whileTap={{ scale: 0.96 }}
                 transition={{ type: "spring", stiffness: 380, damping: 18 }}
-                className="relative shrink-0 pb-3 text-sm font-medium whitespace-nowrap cursor-pointer"
+                className="relative pb-3 text-sm font-medium whitespace-nowrap cursor-pointer"
                 style={{ color: active === tab ? "#c4622d" : "#6b5a4a" }}
               >
                 {tab}
