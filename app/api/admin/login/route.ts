@@ -7,9 +7,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid password" }, { status: 401 });
   }
 
-  const secret = process.env.ADMIN_SECRET!;
   const response = NextResponse.json({ success: true });
-  response.cookies.set("admin_token", secret, {
+  response.cookies.set("admin_token", process.env.ADMIN_PASSWORD, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "strict",

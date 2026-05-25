@@ -25,7 +25,7 @@ export async function POST(request: Request) {
   const cookieStore = await cookies();
   const token = cookieStore.get("admin_token")?.value;
 
-  if (!process.env.ADMIN_SECRET || token !== process.env.ADMIN_SECRET) {
+  if (!process.env.ADMIN_PASSWORD || token !== process.env.ADMIN_PASSWORD) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
