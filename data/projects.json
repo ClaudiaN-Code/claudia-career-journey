@@ -1,0 +1,10 @@
+[
+  {
+    "id": "interview-prep-emily",
+    "title": "Interview Prep for Emily",
+    "url": "https://interview-prep-for-emily.vercel.app/",
+    "description": "A personalized interview question randomizer built as a gift for a classmate. Pulls from a curated question bank tailored to her industry, with a custom icon and her name on the URL.",
+    "toolsUsed": ["Claude Code", "Next.js", "Vercel"],
+    "date": "2026-05-24"
+  }
+]

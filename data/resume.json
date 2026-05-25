@@ -1,0 +1,231 @@
+{
+  "name": "Claudia A. Nasraty",
+  "headline": "I Turn Moving Parts Into Forward Motion",
+  "tagline": "Over 17 years of experience spanning project management, program management, and business operations, with a consistent focus on cross-functional coordination, stakeholder management, and helping people work better together.",
+  "summary": "My approach to work was shaped before I had the language for it. Early in my career I joined a telecommunications company in Kabul, Afghanistan, an international, fast-moving, multicultural environment where I quickly learned that getting work done is never just about tasks and timelines. It is about listening first, earning trust, and understanding how people actually work together. That experience set the foundation for everything that followed.\n\nOver the past 17 years, across project management, program management, and business operations, I have walked into complex situations, figured out what the work actually needs, built the structure to support it, and made sure the people doing the work felt supported while it happened. Most recently, I joined ContextualY as employee number one, where I built the operational foundation for a newly launched B2B insights firm from the ground up. There were no existing systems, just a blank page and a team that needed to hit the ground running.\n\nI think about operations as the thing that makes good work possible. Not more process for the sake of it, but the kind of clarity, structure, and follow-through that removes friction so people can focus on what they are actually there to do. I care just as much about the people side of this as the operational side. The best environments I have been part of are the ones where people communicate openly, support each other, and make it genuinely easier to move forward together. That is what I am always working toward, whether or not it is in my job description.\n\nI also pay close attention to how AI tools can improve the way work actually gets done. Not as a trend to keep up with, but as a practical question I bring to my own workflow first: does this actually help, and does it hold up when the work gets real?\n\nThe rest of my life is just as important to me, and honestly it shapes the professional I am more than I can fully explain. I am a wife, a mom to a 7-year-old who keeps me very honest, and an active member of my community. I am also a passionate home baker, and baking may seem far from operations, but to me they are more connected than they look. Both are about structure, precision, and repeatability. Not hoping for a good result, but creating the conditions for one. That connection might say more about how I work than anything else on this page.",
+  "contact": {
+    "email": "claudianasraty@gmail.com",
+    "phone": "415-216-7271",
+    "location": "San Carlos, CA"
+  },
+  "links": {
+    "linkedin": "https://linkedin.com/in/claudianasraty",
+    "github": null,
+    "portfolio": null,
+    "email": "claudianasraty@gmail.com"
+  },
+  "experience": [
+    {
+      "company": "ContextualY Inc.",
+      "title": "Head of Business Operations",
+      "startDate": "2024-01",
+      "endDate": "Present",
+      "location": "Remote",
+      "description": "Recruited as employee #1 to build the entire operational foundation for a newly launched insights firm focused on B2B tech, with no existing systems in place.",
+      "clients": "Clients: Dell, Microsoft, Apple, AMD, LinkedIn, Instacart",
+      "bullets": [
+        "Built the company's full financial and operational infrastructure from scratch, including AR/AP systems, project costing and profitability tracking, SOW and vendor payment trackers, project file structures, SOPs, and scalable workflows in QBO and Microsoft Teams.",
+        "Leads end-to-end project operations across 3 to 5 concurrent qualitative research engagements, managing timelines, budgets, deliverables, and dependencies while keeping co-founders, clients, and vendors aligned throughout.",
+        "Onboarded and continues to manage relationships with 28 vendors and 10 subcontractors, coordinating up to 7 vendors per project across research partners and subcontractors.",
+        "Drove Women's Business Enterprise National Council (WBENC) certification to completion by mapping requirements, establishing ownership, and managing documentation, submission and timelines.",
+        "Identifies and implements AI workflow applications to improve efficiency, communication, and day-to-day execution across the team, while maintaining practical guardrails for responsible team adoption."
+      ],
+      "iconCategory": "Operations",
+      "emphasis": "now"
+    },
+    {
+      "company": "Material US Inc. (Formerly Greenberg)",
+      "title": "Associate Director of Operations",
+      "startDate": "2022-05",
+      "endDate": "2023-06",
+      "location": "Remote",
+      "description": "Recruited by former Greenberg leaders to support the B2B Tech business unit during a complex post-acquisition transition. Role was eliminated following company-wide restructure.",
+      "bullets": [
+        "Identified lack of structure in weekly leadership meetings and designed a standardized agenda and reporting framework.",
+        "Built a comprehensive team handbook from scratch, covering company structure, leadership, team specialties, and best practices.",
+        "Supported successful Workday rollout by mapping existing workflows and helping shape an adoption process that better fit the team's actual needs.",
+        "Built and led a team training and enablement program, including curriculum design, training calendar development, and delivery."
+      ],
+      "iconCategory": "Operations",
+      "additionalRoles": [
+        {
+          "title": "Team Coordinator",
+          "startDate": "2021-09",
+          "endDate": "2022-04"
+        }
+      ]
+    },
+    {
+      "company": "Career Pause — Family Leave",
+      "title": "Family Leave",
+      "startDate": "2019-04",
+      "endDate": "2021-08",
+      "location": null,
+      "description": "Planned family leave following the birth of my child.",
+      "bullets": [],
+      "iconCategory": "Operations"
+    },
+    {
+      "company": "Greenberg Inc.",
+      "title": "Team Manager, Client Program Manager",
+      "startDate": "2017-02",
+      "endDate": "2019-03",
+      "location": "Emeryville, CA",
+      "description": "Re-hired as a senior team member. As Team Manager, led a team of 3 direct and 1 indirect report.",
+      "bullets": [
+        "Worked closely with the Head of Strategy on resourcing and with Sales on project setup and budget alignment.",
+        "Developed, managed, and maintained workflow processes and written playbooks for qualitative research projects."
+      ],
+      "iconCategory": "Operations",
+      "additionalRoles": [
+        {
+          "title": "Sr. Client Program Manager",
+          "startDate": "2016-01",
+          "endDate": "2017-01",
+          "clients": "Clients: Google, Microsoft, Visa"
+        }
+      ]
+    },
+    {
+      "company": "Hero Marketing",
+      "title": "Sr. Client Strategy Manager",
+      "startDate": "2015-07",
+      "endDate": "2016-01",
+      "location": "San Francisco, CA",
+      "description": "Clients: Kaiser Permanente, Delta Dental, PLS Financial Services.",
+      "bullets": [
+        "Reduced client attrition for a Financial Services client by auditing deliverables, managing expectations, creating clearer timelines."
+      ],
+      "iconCategory": "Marketing"
+    },
+    {
+      "company": "Greenberg Inc.",
+      "title": "Client Program Manager",
+      "startDate": "2015-02",
+      "endDate": "2015-04",
+      "location": "Emeryville, CA",
+      "description": "Clients: Google, Microsoft, Visa, Wells Fargo, Sony PlayStation, CNBC, Ticketmaster.",
+      "bullets": [],
+      "iconCategory": "Operations",
+      "additionalRoles": [
+        {
+          "title": "Project Manager",
+          "startDate": "2013-09",
+          "endDate": "2015-01",
+          "description": "Built project budgets that balanced competitive pricing with gross-profit margin targets. Delivered a high volume of projects on time and on or under budget through strong cross-functional coordination."
+        }
+      ]
+    },
+    {
+      "company": "A2Z Media Group",
+      "title": "Account Manager",
+      "startDate": "2010-10",
+      "endDate": "2013-04",
+      "location": "Newark, CA",
+      "description": "Clients: AAA Northern California, River Rock Casino, Chavez Supermarket, Golden Gate Fields.",
+      "bullets": [
+        "Built foundational systems from scratch, including client billing, retainer tracking, and vendor payment systems across 20-30 media partners.",
+        "Contributed to 133% client growth.",
+        "Key role in events ranging from 1,000 to 15,000 attendees."
+      ],
+      "iconCategory": "Marketing"
+    },
+    {
+      "company": "TURNSTILE (formerly TLG Multicultural Communications)",
+      "title": "Account Coordinator",
+      "startDate": "2010-03",
+      "endDate": "2010-09",
+      "location": null,
+      "description": "Supported account director for multicultural full-service advertising agency. Recruited by A2Z agency partners (formerly from Turnstile) to direct day-to-day startup operations and client service for full-service multicultural advertising agency.",
+      "clients": "Clients: River Rock Casino, Chavez Supermarket",
+      "bullets": [],
+      "iconCategory": "Marketing"
+    },
+    {
+      "company": "ROSHAN (Telecom Development Company Afghanistan)",
+      "title": "Sr. Marketing Communications Specialist",
+      "startDate": "2008-02",
+      "endDate": "2009-05",
+      "location": "Kabul, Afghanistan",
+      "description": "Joined Roshan in Kabul to support department operations and major advertising campaigns across youth, mass market, and business segments. One of the most formative roles of my career, both professionally and personally, working in a truly international and multicultural environment serving over 3 million subscribers across 230 cities. This role shaped how I approach cross-functional coordination, adaptability, and trust-building in complex settings.",
+      "bullets": [
+        "Led a $700K youth segment campaign, delivering a 40% increase in monthly acquisition and 230,000 activations.",
+        "Supported large-scale advertising campaigns across youth, mass market, and business segments.",
+        "Worked with global agency partners including Grey Group and JWT, as well as in-house creative teams, on campaign planning and execution.",
+        "Coordinated across sales, legal, finance, and customer care to support compliant campaign rollout.",
+        "Managed execution across TV, radio, print, out-of-home, mobile, and direct marketing channels."
+      ],
+      "iconCategory": "Marketing",
+      "emphasis": "early"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad Tecnológica de México",
+      "degree": "BA",
+      "field": "Marketing",
+      "start": null,
+      "end": null
+    }
+  ],
+  "skills": [
+    "Business Operations",
+    "Project Delivery",
+    "Process & Workflow Design",
+    "Cross-Functional Coordination",
+    "Stakeholder Management",
+    "Team Alignment",
+    "AI Workflow Applications/Implementation",
+    "Microsoft Office",
+    "Google Workspace",
+    "QuickBooks Online",
+    "Workday",
+    "NetSuite",
+    "Asana",
+    "Slack",
+    "Claude",
+    "Claude Code",
+    "Claude Cowork",
+    "Chat GPT",
+    "Chat GPT Codex",
+    "Microsoft Copilot",
+    "Lovable"
+  ],
+  "languages": [
+    "English",
+    "Spanish"
+  ],
+  "clients": {
+    "b2b": [
+      "Microsoft",
+      "AMD",
+      "Dell",
+      "LinkedIn"
+    ],
+    "b2c": [
+      "Apple",
+      "Instacart",
+      "Google",
+      "Visa",
+      "Wells Fargo",
+      "Sony Interactive Entertainment",
+      "Sony PlayStation",
+      "CNBC",
+      "Ticketmaster",
+      "Kaiser Permanente",
+      "Delta Dental",
+      "PLS Financial Services",
+      "AAA Northern California",
+      "River Rock Casino",
+      "Chavez Supermarket",
+      "Golden Gate Fields"
+    ]
+  },
+  "certifications": [
+    "From Tool to Teammates: Working Smarter with AI — LinkedIn, Mar 2026",
+    "Integrating Generative AI into Business Strategy — LinkedIn, Mar 2026",
+    "Navigating AI Regulations: A Business Guide to Risk, Responsibility, and Strategy — LinkedIn, Mar 2026",
+    "Automate Your Workflows with Generative AI — LinkedIn, Mar 2026",
+    "Building an Adaptability Mindset in the Age of AI — LinkedIn, Mar 2026"
+  ]
+}
