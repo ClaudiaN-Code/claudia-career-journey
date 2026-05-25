@@ -80,8 +80,8 @@ export function Hero({ name, headline, tagline, linkedin }: HeroProps) {
           {/* Right — photo */}
           <div className="flex-shrink-0 flex items-center justify-center">
             <div
-              className="relative"
-              style={{ width: "clamp(160px, 55vw, 420px)", aspectRatio: "3/4", maxHeight: "45vh" }}
+              className="relative w-[55vw] max-w-[260px] md:w-[30vw] md:max-w-[420px]"
+              style={{ aspectRatio: "3/4" }}
             >
               {/* Glow ring behind photo */}
               <div
