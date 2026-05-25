@@ -60,16 +60,16 @@ export function JourneyTabs({
     <section id="journey" className="py-16 px-4" style={{ background: "#f5e8d0" }}>
       <div className="max-w-3xl mx-auto">
 
-        {/* Tab bar — pill bubbles */}
-        <div className="flex flex-wrap gap-2 mb-12">
-          {TABS.map((tab) => (
+        {/* Tab bar — pill bubbles, grid fills full width */}
+        <div className="grid grid-cols-12 gap-2 mb-12">
+          {TABS.map((tab, i) => (
             <motion.button
               key={tab}
               onClick={() => setActive(tab)}
-              whileHover={{ scale: 1.08 }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.15 }}
-              className="px-4 py-2 rounded-full text-sm font-semibold transition-colors"
+              className={`py-2 rounded-full text-xs font-semibold text-center transition-colors ${i < 4 ? "col-span-3" : "col-span-4"}`}
               style={{
                 background: active === tab ? "#c4622d" : "#1a1410",
                 color: "#faf9f6",
