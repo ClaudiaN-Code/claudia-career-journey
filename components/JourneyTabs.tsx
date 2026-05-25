@@ -61,7 +61,7 @@ export function JourneyTabs({
       <div className="max-w-3xl mx-auto">
 
         {/* Tab bar — pill bubbles, centered natural flow */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
           {TABS.map((tab) => (
             <motion.button
               key={tab}
@@ -79,6 +79,9 @@ export function JourneyTabs({
             </motion.button>
           ))}
         </div>
+
+        {/* Divider */}
+        <div className="border-t border-[#d4c4b0] mb-10" />
 
         {/* About */}
         {active === "About" && (
