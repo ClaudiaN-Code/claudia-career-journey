@@ -81,10 +81,9 @@ export function JourneyTabs({
         </div>
 
         {/* Divider */}
-        <div className="flex items-center gap-3 mb-10">
-          <div className="flex-1 border-t-2 border-[#c4622d]/20" />
-          <div className="w-1.5 h-1.5 rounded-full bg-[#c4622d]/30" />
-          <div className="flex-1 border-t-2 border-[#c4622d]/20" />
+        <div className="mb-10 space-y-2">
+          <div className="w-full h-px" style={{ background: "linear-gradient(to right, transparent, rgba(196,98,45,0.6) 50%, transparent)" }} />
+          <div className="w-full h-px" style={{ background: "linear-gradient(to right, transparent, rgba(196,98,45,0.2) 50%, transparent)" }} />
         </div>
 
         {/* About */}

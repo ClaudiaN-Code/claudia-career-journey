@@ -24,7 +24,7 @@ export function Hero({ name, headline, tagline, linkedin }: HeroProps) {
         }}
       />
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-16 pt-20 md:pt-28 pb-16 md:pb-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-16 pt-20 pb-20 md:pt-28 md:pb-20">
         <div className="flex flex-col-reverse md:flex-row items-center gap-8 md:gap-20">
 
           {/* Left — text */}
