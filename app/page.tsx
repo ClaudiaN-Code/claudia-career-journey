@@ -1,4 +1,6 @@
 import resumeData from "@/data/resume.json";
+
+export const dynamic = "force-dynamic";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { JourneyTabs } from "@/components/JourneyTabs";
