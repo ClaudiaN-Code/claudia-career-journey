@@ -54,6 +54,12 @@ export function Hero({ name, headline, tagline, linkedin }: HeroProps) {
             )}
 
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+              <a
+                href="#journey"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm border border-[#c4622d]/40 text-[#c4622d] hover:border-[#c4622d] hover:bg-[#c4622d]/5 transition-all"
+              >
+                See my journey ↓
+              </a>
               {linkedin && (
                 <a
                   href={linkedin.startsWith("http") ? linkedin : `https://${linkedin}`}
@@ -68,12 +74,6 @@ export function Hero({ name, headline, tagline, linkedin }: HeroProps) {
                   Connect on LinkedIn
                 </a>
               )}
-              <a
-                href="#journey"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm border border-[#c4622d]/40 text-[#c4622d] hover:border-[#c4622d] hover:bg-[#c4622d]/5 transition-all"
-              >
-                See my journey ↓
-              </a>
             </div>
           </div>
 
