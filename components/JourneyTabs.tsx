@@ -299,7 +299,7 @@ export function JourneyTabs({
 
             <div className="space-y-5">
               <p className="text-[#0d8a8a] font-bold text-xs tracking-widest uppercase">
-                AI
+                AI Stack
               </p>
               {[
                 { label: "AI Assistants", tools: ["Claude", "Chat GPT", "Microsoft Copilot"] },
