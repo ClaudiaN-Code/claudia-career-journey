@@ -157,6 +157,9 @@ export function Milestone({
                       <p className="text-[#6b5a4a]/60 text-xs mt-0.5">
                         {formatDate(startDate)} – {formatDate(endDate)}
                       </p>
+                      {clients && (
+                        <p className="text-[#6b5a4a]/70 text-xs mt-1 italic">{clients}</p>
+                      )}
                     </div>
                     {additionalRoles.map((role, i) => (
                       <div key={i}>

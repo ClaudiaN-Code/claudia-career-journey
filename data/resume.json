@@ -57,7 +57,7 @@
       ]
     },
     {
-      "company": "Career Pause — Family Leave",
+      "company": "Career Pause \u2014 Family Leave",
       "title": "Family Leave",
       "startDate": "2019-04",
       "endDate": "2021-08",
@@ -93,11 +93,12 @@
       "startDate": "2015-07",
       "endDate": "2016-01",
       "location": "San Francisco, CA",
-      "description": "Clients: Kaiser Permanente, Delta Dental, PLS Financial Services.",
+      "description": null,
       "bullets": [
         "Reduced client attrition for a Financial Services client by auditing deliverables, managing expectations, creating clearer timelines."
       ],
-      "iconCategory": "Marketing"
+      "iconCategory": "Marketing",
+      "clients": "Clients: Kaiser Permanente, Delta Dental, PLS Financial Services."
     },
     {
       "company": "Greenberg Inc.",
@@ -105,7 +106,7 @@
       "startDate": "2015-02",
       "endDate": "2015-04",
       "location": "Emeryville, CA",
-      "description": "Clients: Google, Microsoft, Visa, Wells Fargo, Sony PlayStation, CNBC, Ticketmaster.",
+      "description": null,
       "bullets": [],
       "iconCategory": "Operations",
       "additionalRoles": [
@@ -115,7 +116,8 @@
           "endDate": "2015-01",
           "description": "Built project budgets that balanced competitive pricing with gross-profit margin targets. Delivered a high volume of projects on time and on or under budget through strong cross-functional coordination."
         }
-      ]
+      ],
+      "clients": "Clients: Google, Microsoft, Visa, Wells Fargo, Sony PlayStation, CNBC, Ticketmaster."
     },
     {
       "company": "A2Z Media Group",
@@ -123,13 +125,14 @@
       "startDate": "2010-10",
       "endDate": "2013-04",
       "location": "Newark, CA",
-      "description": "Clients: AAA Northern California, River Rock Casino, Chavez Supermarket, Golden Gate Fields.",
+      "description": null,
       "bullets": [
         "Built foundational systems from scratch, including client billing, retainer tracking, and vendor payment systems across 20-30 media partners.",
         "Contributed to 133% client growth.",
         "Key role in events ranging from 1,000 to 15,000 attendees."
       ],
-      "iconCategory": "Marketing"
+      "iconCategory": "Marketing",
+      "clients": "Clients: AAA Northern California, River Rock Casino, Chavez Supermarket, Golden Gate Fields."
     },
     {
       "company": "TURNSTILE (formerly TLG Multicultural Communications)",
@@ -162,7 +165,7 @@
   ],
   "education": [
     {
-      "institution": "Universidad Tecnológica de México",
+      "institution": "Universidad Tecnol\u00f3gica de M\u00e9xico",
       "degree": "BA",
       "field": "Marketing",
       "start": null,
@@ -223,11 +226,11 @@
     ]
   },
   "certifications": [
-    "From Tool to Teammates: Working Smarter with AI — LinkedIn, Mar 2026",
-    "Integrating Generative AI into Business Strategy — LinkedIn, Mar 2026",
-    "Navigating AI Regulations: A Business Guide to Risk, Responsibility, and Strategy — LinkedIn, Mar 2026",
-    "Automate Your Workflows with Generative AI — LinkedIn, Mar 2026",
-    "Building an Adaptability Mindset in the Age of AI — LinkedIn, Mar 2026"
+    "From Tool to Teammates: Working Smarter with AI \u2014 LinkedIn, Mar 2026",
+    "Integrating Generative AI into Business Strategy \u2014 LinkedIn, Mar 2026",
+    "Navigating AI Regulations: A Business Guide to Risk, Responsibility, and Strategy \u2014 LinkedIn, Mar 2026",
+    "Automate Your Workflows with Generative AI \u2014 LinkedIn, Mar 2026",
+    "Building an Adaptability Mindset in the Age of AI \u2014 LinkedIn, Mar 2026"
   ],
   "affiliations": [
     {
