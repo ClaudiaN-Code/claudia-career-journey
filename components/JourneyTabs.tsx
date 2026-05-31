@@ -33,6 +33,13 @@ interface ExperienceEntry {
   additionalRoles?: AdditionalRole[];
 }
 
+interface Affiliation {
+  name: string;
+  role: string;
+  since: string;
+  logoUrl?: string;
+}
+
 interface JourneyTabsProps {
   summary: string;
   experience: ExperienceEntry[];
@@ -43,6 +50,7 @@ interface JourneyTabsProps {
   certifications: string[];
   languages: string[];
   clients: { b2b: string[]; b2c: string[] };
+  affiliations: Affiliation[];
 }
 
 export function JourneyTabs({
@@ -55,6 +63,7 @@ export function JourneyTabs({
   certifications,
   languages,
   clients,
+  affiliations,
 }: JourneyTabsProps) {
   const [active, setActive] = useState<Tab>("About");
   const [openSections, setOpenSections] = useState<Set<string>>(new Set());
@@ -148,6 +157,31 @@ export function JourneyTabs({
                     <div key={i} className="rounded-xl border border-[#e8ddd0] bg-white/60 px-5 py-4">
                       <p className="font-heading font-semibold text-[#1a1410]">{edu.institution}</p>
                       <p className="text-[#6b5a4a] text-sm">{edu.degree} · {edu.field}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {affiliations.length > 0 && (
+              <div>
+                <p className="text-[#c4622d] font-medium text-xs tracking-widest uppercase mb-4">
+                  Affiliations
+                </p>
+                <div className="space-y-2">
+                  {affiliations.map((aff, i) => (
+                    <div key={i} className="flex items-center gap-4 rounded-xl border border-[#e8ddd0] bg-white/60 px-5 py-4">
+                      {aff.logoUrl && (
+                        <img
+                          src={aff.logoUrl}
+                          alt={aff.name}
+                          className="w-10 h-10 rounded-full object-cover shrink-0"
+                        />
+                      )}
+                      <div>
+                        <p className="font-heading font-semibold text-[#1a1410]">{aff.name}</p>
+                        <p className="text-[#6b5a4a] text-sm">{aff.role} · Since {aff.since}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
