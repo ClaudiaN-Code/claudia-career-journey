@@ -9,7 +9,7 @@ import postsData from "@/data/posts.json";
 import resumeData from "@/data/resume.json";
 import buildsData from "@/data/builds.json";
 
-const TABS = ["About", "Professional History", "Skills & Tools", "Clients", "Recommendations", "Writing", "Builds & Projects"] as const;
+const TABS = ["About", "Professional History", "Skills & Tools", "Clients", "Builds & Projects", "Recommendations", "Writing"] as const;
 type Tab = (typeof TABS)[number];
 
 interface AdditionalRole {
