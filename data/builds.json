@@ -57,7 +57,7 @@
     {
       "id": "tres-hearts-baker",
       "title": "Tres Hearts Baker Recipe Box",
-      "description": "Baking is a passion of mine is one of the ways I show up for the people I love. Tres Hearts Baker started as a social media brand last summer in 2025. I created it to inspire beginner bakers, share helpful tips, and document the things I make.\n\nMost of my recipes used to live in a binder, so I built a digital recipe box using Claude Code to keep everything in one place: recipes I’m testing, recipes I’ve perfected, and the ones I keep coming back to. The site includes an AI recipe helper, batch import, and an admin area where I can easily update and manage my recipes.",
+      "description": "Baking is a passion of mine is one of the ways I show up for the people I love. Tres Hearts Baker started as a social media brand last summer in 2025. I created it to inspire beginner bakers, share helpful tips, and document the things I make.\n\nMost of my recipes live in a binder, so I built a digital recipe box using Claude Code to keep everything in one place: recipes I’m testing, recipes I’ve perfected, and the ones I keep coming back to. The site includes an AI recipe helper, batch import, and an admin area where I can easily update and manage my recipes.",
       "imageUrls": []
     },
     {
