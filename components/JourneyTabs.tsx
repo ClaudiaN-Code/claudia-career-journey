@@ -669,9 +669,13 @@ export function JourneyTabs({
                           <span className="text-[#c4622d]/30 text-xs font-medium tracking-widest uppercase">Screenshot coming soon</span>
                         </div>
                       )}
-                      <div className="px-5 py-4 flex flex-col gap-1">
+                      <div className="px-5 py-4 flex flex-col gap-2">
                         <p className="font-semibold text-[#1a1410] text-sm">{item.title}</p>
-                        <p className="text-[#6b5a4a] text-xs leading-relaxed">{item.description}</p>
+                        <div className="space-y-2">
+                          {item.description.split("\n\n").map((para, i) => (
+                            <p key={i} className="text-[#6b5a4a] text-xs leading-relaxed">{para}</p>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   );
