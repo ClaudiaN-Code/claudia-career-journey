@@ -487,7 +487,7 @@ export function JourneyTabs({
                 Things I&apos;ve Built
               </h2>
               <p className="text-[#6b5a4a] text-base leading-relaxed">
-                This is where I get to show, not just tell. Some of what I&apos;ve built lives at work — behind the scenes of a research project or an ops workflow, solving a real problem for a real team. Some of it lives in my own time, made out of curiosity, a problem I wanted to solve, or just the satisfaction of figuring something out.
+                This is where I get to show, not just tell. Some of what I&apos;ve built lives at work, behind the scenes of a research project or an ops workflow, solving a real problem for a real team. Some of it lives in my own time, made out of curiosity, a problem I wanted to solve, or just the satisfaction of figuring something out.
               </p>
             </div>
 
@@ -495,7 +495,7 @@ export function JourneyTabs({
             <div className="space-y-5">
               <p className="text-[#0d8a8a] font-bold text-xs tracking-widest uppercase">Work</p>
               <p className="text-[#6b5a4a] text-sm leading-relaxed -mt-2">
-                Tools and agents I&apos;ve built to make operations smoother, faster, and more consistent. These live inside real workflows and solve real problems — the kind of friction that doesn&apos;t show up in a job description but quietly takes up a lot of time.
+                Tools and agents I&apos;ve built to make operations smoother, faster, and more consistent. These live inside real workflows and solve real problems: the kind of friction that doesn&apos;t show up in a job description but quietly takes up a lot of time.
               </p>
 
               {/* Research PM Agent card */}
@@ -523,10 +523,10 @@ export function JourneyTabs({
                     </span>
                   </div>
                   <p className="text-[#6b5a4a] text-sm leading-relaxed">
-                    As Head of Business Operations at ContextualY, one of my recurring challenges was that every recruiting vendor delivered respondent profiles in their own format — different fields, different terminology, different levels of detail. It made comparison slower, review messier, and client-facing documentation inconsistent. So I built something to fix it.
+                    As Head of Business Operations at ContextualY, one of my recurring challenges was that every recruiting vendor delivered respondent profiles in their own format: different fields, different terminology, different levels of detail. It made comparison slower, review messier, and client-facing documentation inconsistent. So I built something to fix it.
                   </p>
                   <p className="text-[#6b5a4a] text-sm leading-relaxed mt-2">
-                    The Recruiting QA agent acts as a PM-grade quality layer for qualitative research recruiting. It standardizes profile grids, evaluates incoming respondents against screener criteria, flags risks, and produces clean, blind-safe feedback — all without exposing confidential client information or screening strategy.
+                    The Recruiting QA agent acts as a PM-grade quality layer for qualitative research recruiting. It standardizes profile grids, evaluates incoming respondents against screener criteria, flags risks, and produces clean, blind-safe feedback, all without exposing confidential client information or screening strategy.
                   </p>
                 </div>
 
@@ -541,8 +541,8 @@ export function JourneyTabs({
                       label: "The Need",
                       content: (
                         <div className="space-y-3 text-sm text-[#6b5a4a] leading-relaxed">
-                          <p>Qualitative recruiting requires accuracy, speed, and discretion. When multiple vendors are involved, the process can become fragmented — each using their own grid, formatting, and level of detail. This makes it harder to compare respondents consistently, catch qualification gaps, and keep client-facing review clean.</p>
-                          <p>The key needs were clear: standardize inputs across vendors, create a consistent format for client review, improve recruiting QA without slowing timelines, reduce manual effort for the project team, and protect sensitive information — including client identity, qualification logic, and respondent PII — while still giving recruiters actionable, useful feedback.</p>
+                          <p>Qualitative recruiting requires accuracy, speed, and discretion. When multiple vendors are involved, the process can become fragmented, each using their own grid, formatting, and level of detail. This makes it harder to compare respondents consistently, catch qualification gaps, and keep client-facing review clean.</p>
+                          <p>The key needs were clear: standardize inputs across vendors, create a consistent format for client review, improve recruiting QA without slowing timelines, reduce manual effort for the project team, and protect sensitive information (including client identity, qualification logic, and respondent PII) while still giving recruiters actionable, useful feedback.</p>
                         </div>
                       ),
                     },
@@ -596,8 +596,8 @@ export function JourneyTabs({
                       label: "How It's Documented",
                       content: (
                         <div className="space-y-3 text-sm text-[#6b5a4a] leading-relaxed">
-                          <p>The agent is supported by documentation that makes it usable by anyone on the project team — not just me. It covers the agent&apos;s purpose and use case, the inputs required before it can produce outputs (kick-off decks, screeners, must-have criteria, exclusion logic), and a step-by-step standard workflow from project initialization through client-ready status updates.</p>
-                          <p>Output types are clearly defined — profile grids, QA reviews, risk flags, follow-up questions, blind-safe recruiter feedback, client-facing summaries, and daily status drafts. Privacy guardrails are built into the documentation, and the review process is explicit: the agent supports judgment, it doesn&apos;t replace it. Final decisions stay with the project lead.</p>
+                          <p>The agent is supported by documentation that makes it usable by anyone on the project team, not just me. It covers the agent&apos;s purpose and use case, the inputs required before it can produce outputs (kick-off decks, screeners, must-have criteria, exclusion logic), and a step-by-step standard workflow from project initialization through client-ready status updates.</p>
+                          <p>Output types are clearly defined: profile grids, QA reviews, risk flags, follow-up questions, blind-safe recruiter feedback, client-facing summaries, and daily status drafts. Privacy guardrails are built into the documentation, and the review process is explicit: the agent supports judgment, it doesn&apos;t replace it. Final decisions stay with the project lead.</p>
                         </div>
                       ),
                     },
@@ -635,12 +635,12 @@ export function JourneyTabs({
             <div className="space-y-5">
               <p className="text-[#c4622d] font-bold text-xs tracking-widest uppercase">Personal</p>
               <p className="text-[#6b5a4a] text-sm leading-relaxed -mt-2">
-                Outside of work, I build things for myself — to learn, to solve something that was bothering me, or just because I was curious what would happen if I tried. More coming here soon.
+                Outside of work, I build things for myself: to learn, to solve something that was bothering me, or just because I was curious what would happen if I tried. More coming here soon.
               </p>
 
               <div className="grid sm:grid-cols-2 gap-5">
                 {[
-                  { title: "Project coming soon", description: "Something I've been working on — details and a screenshot on the way." },
+                  { title: "Project coming soon", description: "Something I've been working on. Details and a screenshot on the way." },
                   { title: "More in the works", description: "A few other things in progress. Check back soon." },
                 ].map((item, i) => (
                   <div
