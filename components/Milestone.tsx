@@ -206,15 +206,15 @@ export function Milestone({
               <p className={`font-semibold text-sm mb-1 text-[#c4622d]`}>
                 {company}
               </p>
-              <p className="text-[#6b5a4a]/60 text-xs mb-3">
+              <p className="text-[#6b5a4a]/60 text-xs mb-1">
                 {formatDate(startDate)} – {formatDate(endDate)}
                 {location && ` · ${location}`}
               </p>
-              {description && (
-                <p className="text-[#6b5a4a] text-sm leading-relaxed mb-1">{description}</p>
-              )}
               {clients && (
                 <p className="text-[#6b5a4a]/70 text-xs italic mb-3">{clients}</p>
+              )}
+              {description && (
+                <p className="text-[#6b5a4a] text-sm leading-relaxed mb-1">{description}</p>
               )}
               {bullets.length > 0 && (
                 <ul className="space-y-1.5">
