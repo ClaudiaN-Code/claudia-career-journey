@@ -7,6 +7,7 @@ import { MotionMilestone } from "./MotionMilestone";
 import recommendationsData from "@/data/recommendations.json";
 import postsData from "@/data/posts.json";
 import resumeData from "@/data/resume.json";
+import buildsData from "@/data/builds.json";
 
 const TABS = ["About", "Professional History", "Skills & Tools", "Clients", "Recommendations", "Writing", "Builds & Projects", "Contact"] as const;
 type Tab = (typeof TABS)[number];
@@ -477,7 +478,9 @@ export function JourneyTabs({
         )}
 
         {/* Builds & Projects */}
-        {active === "Builds & Projects" && (
+        {active === "Builds & Projects" && (() => {
+          const b = buildsData;
+          return (
           <div className="space-y-12">
             <div>
               <h2
@@ -486,174 +489,146 @@ export function JourneyTabs({
               >
                 Things I&apos;ve Built
               </h2>
-              <p className="text-[#6b5a4a] text-base leading-relaxed">
-                This is where I get to show, not just tell. Some of what I&apos;ve built lives at work, behind the scenes of a research project or an ops workflow, solving a real problem for a real team. Some of it lives in my own time, made out of curiosity, a problem I wanted to solve, or just the satisfaction of figuring something out.
-              </p>
+              <p className="text-[#6b5a4a] text-base leading-relaxed">{b.intro}</p>
             </div>
 
             {/* Work */}
             <div className="space-y-5">
               <p className="text-[#0d8a8a] font-bold text-xs tracking-widest uppercase">Work</p>
-              <p className="text-[#6b5a4a] text-sm leading-relaxed -mt-2">
-                Tools and agents I&apos;ve built to make operations smoother, faster, and more consistent. These live inside real workflows and solve real problems: the kind of friction that doesn&apos;t show up in a job description but quietly takes up a lot of time.
-              </p>
+              <p className="text-[#6b5a4a] text-sm leading-relaxed -mt-2">{b.workIntro}</p>
 
-              {/* Research PM Agent card */}
-              <div
-                className="rounded-2xl border border-[#0d8a8a]/20 overflow-hidden"
-                style={{ background: "linear-gradient(135deg, #f0fafa 0%, #ffffff 60%)" }}
-              >
-                {/* Card header */}
-                <div className="px-6 pt-6 pb-5">
-                  <div className="flex items-start justify-between gap-4 mb-3">
-                    <div>
-                      <h3
-                        className="font-bold text-lg text-[#1a1410]"
-                        style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
-                      >
-                        Research PM Agent
-                      </h3>
-                      <p className="text-[#0d8a8a] text-xs font-medium mt-0.5">Recruiting QA · ContextualY, inc.</p>
-                    </div>
-                    <span
-                      className="shrink-0 px-3 py-1 rounded-full text-xs font-medium border border-[#0d8a8a]/25 text-[#0d8a8a]"
-                      style={{ background: "rgba(13,138,138,0.07)" }}
-                    >
-                      Internal Tool
-                    </span>
-                  </div>
-                  <p className="text-[#6b5a4a] text-sm leading-relaxed">
-                    As Head of Business Operations at ContextualY, one of my recurring challenges was that every recruiting vendor delivered respondent profiles in their own format: different fields, different terminology, different levels of detail. It made comparison slower, review messier, and client-facing documentation inconsistent. So I built something to fix it.
-                  </p>
-                  <p className="text-[#6b5a4a] text-sm leading-relaxed mt-2">
-                    The Recruiting QA agent acts as a PM-grade quality layer for qualitative research recruiting. It standardizes profile grids, evaluates incoming respondents against screener criteria, flags risks, and produces clean, blind-safe feedback, all without exposing confidential client information or screening strategy.
-                  </p>
-                </div>
-
-                {/* Divider */}
-                <div className="h-px mx-6" style={{ background: "rgba(13,138,138,0.12)" }} />
-
-                {/* Expandable sections */}
-                <div className="divide-y divide-[#0d8a8a]/10">
-                  {[
-                    {
-                      id: "need",
-                      label: "The Need",
-                      content: (
-                        <div className="space-y-3 text-sm text-[#6b5a4a] leading-relaxed">
-                          <p>Qualitative recruiting requires accuracy, speed, and discretion. When multiple vendors are involved, the process can become fragmented, each using their own grid, formatting, and level of detail. This makes it harder to compare respondents consistently, catch qualification gaps, and keep client-facing review clean.</p>
-                          <p>The key needs were clear: standardize inputs across vendors, create a consistent format for client review, improve recruiting QA without slowing timelines, reduce manual effort for the project team, and protect sensitive information (including client identity, qualification logic, and respondent PII) while still giving recruiters actionable, useful feedback.</p>
+              {b.workProjects.map(proj => {
+                const sections = [
+                  {
+                    id: `${proj.id}-need`,
+                    label: "The Need",
+                    content: (
+                      <div className="space-y-3 text-sm text-[#6b5a4a] leading-relaxed">
+                        <p>{proj.needP1}</p>
+                        <p>{proj.needP2}</p>
+                      </div>
+                    ),
+                  },
+                  {
+                    id: `${proj.id}-does`,
+                    label: "What It Does",
+                    content: (
+                      <ul className="space-y-2 text-sm text-[#6b5a4a]">
+                        {proj.whatItDoesBullets.map((item, i) => (
+                          <li key={i} className="flex items-start gap-2.5">
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#0d8a8a] shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    ),
+                  },
+                  {
+                    id: `${proj.id}-impact`,
+                    label: "Business Impact",
+                    content: (
+                      <div className="grid sm:grid-cols-2 gap-3">
+                        {proj.businessImpactItems.map((item, i) => (
+                          <div key={i} className="rounded-xl border border-[#0d8a8a]/15 bg-white/70 px-4 py-3">
+                            <p className="font-semibold text-[#1a1410] text-xs mb-1">{item.label}</p>
+                            <p className="text-[#6b5a4a] text-xs leading-relaxed">{item.detail}</p>
+                          </div>
+                        ))}
+                      </div>
+                    ),
+                  },
+                  {
+                    id: `${proj.id}-docs`,
+                    label: "How It's Documented",
+                    content: (
+                      <div className="space-y-3 text-sm text-[#6b5a4a] leading-relaxed">
+                        <p>{proj.docsP1}</p>
+                        <p>{proj.docsP2}</p>
+                      </div>
+                    ),
+                  },
+                ];
+                return (
+                  <div
+                    key={proj.id}
+                    className="rounded-2xl border border-[#0d8a8a]/20 overflow-hidden"
+                    style={{ background: "linear-gradient(135deg, #f0fafa 0%, #ffffff 60%)" }}
+                  >
+                    <div className="px-6 pt-6 pb-5">
+                      <div className="flex items-start justify-between gap-4 mb-3">
+                        <div>
+                          <h3
+                            className="font-bold text-lg text-[#1a1410]"
+                            style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
+                          >
+                            {proj.title}
+                          </h3>
+                          <p className="text-[#0d8a8a] text-xs font-medium mt-0.5">{proj.subtitle}</p>
                         </div>
-                      ),
-                    },
-                    {
-                      id: "does",
-                      label: "What It Does",
-                      content: (
-                        <ul className="space-y-2 text-sm text-[#6b5a4a]">
-                          {[
-                            "Creates standardized respondent profile grids from screeners and stakeholder requirements",
-                            "Translates project criteria into structured recruiter-facing fields",
-                            "Reviews incoming profiles for completeness, consistency, and fit",
-                            "Flags missing, vague, conflicting, or potentially risky responses",
-                            "Identifies possible gaming signals or overly polished answers",
-                            "Recommends follow-up questions for borderline or unclear candidates",
-                            "Produces blind-safe feedback that can be shared with recruiters",
-                            "Tracks when respondents are approved, scheduled, and completed",
-                            "Drafts daily client-ready status updates based on email activity",
-                          ].map((item, i) => (
-                            <li key={i} className="flex items-start gap-2.5">
-                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#0d8a8a] shrink-0" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      ),
-                    },
-                    {
-                      id: "impact",
-                      label: "Business Impact",
-                      content: (
-                        <div className="grid sm:grid-cols-2 gap-3">
-                          {[
-                            { label: "Faster profile review", detail: "Reduces time spent manually reformatting and evaluating vendor submissions." },
-                            { label: "Improved consistency", detail: "Ensures all vendors provide respondent information in a standardized format." },
-                            { label: "Stronger recruiting quality", detail: "Helps identify incomplete, weak, or potentially misaligned candidates earlier." },
-                            { label: "Cleaner client deliverables", detail: "Creates a more polished and consistent profile review experience." },
-                            { label: "Reduced operational risk", detail: "Prevents disclosure of client identity, sensitive qualification logic, and respondent PII." },
-                            { label: "Scalable process foundation", detail: "A repeatable workflow that grows with the company." },
-                          ].map((item, i) => (
-                            <div key={i} className="rounded-xl border border-[#0d8a8a]/15 bg-white/70 px-4 py-3">
-                              <p className="font-semibold text-[#1a1410] text-xs mb-1">{item.label}</p>
-                              <p className="text-[#6b5a4a] text-xs leading-relaxed">{item.detail}</p>
-                            </div>
-                          ))}
-                        </div>
-                      ),
-                    },
-                    {
-                      id: "docs",
-                      label: "How It's Documented",
-                      content: (
-                        <div className="space-y-3 text-sm text-[#6b5a4a] leading-relaxed">
-                          <p>The agent is supported by documentation that makes it usable by anyone on the project team, not just me. It covers the agent&apos;s purpose and use case, the inputs required before it can produce outputs (kick-off decks, screeners, must-have criteria, exclusion logic), and a step-by-step standard workflow from project initialization through client-ready status updates.</p>
-                          <p>Output types are clearly defined: profile grids, QA reviews, risk flags, follow-up questions, blind-safe recruiter feedback, client-facing summaries, and daily status drafts. Privacy guardrails are built into the documentation, and the review process is explicit: the agent supports judgment, it doesn&apos;t replace it. Final decisions stay with the project lead.</p>
-                        </div>
-                      ),
-                    },
-                  ].map(({ id, label, content }) => (
-                    <div key={id}>
-                      <button
-                        onClick={() => toggleSection(id)}
-                        className="w-full flex items-center justify-between px-6 py-4 text-left transition-colors hover:bg-[#0d8a8a]/5"
-                      >
-                        <span className="text-sm font-semibold text-[#1a1410]">{label}</span>
                         <span
-                          className="text-[#0d8a8a] text-lg font-light leading-none transition-transform duration-200"
-                          style={{ transform: openSections.has(id) ? "rotate(45deg)" : "rotate(0deg)" }}
+                          className="shrink-0 px-3 py-1 rounded-full text-xs font-medium border border-[#0d8a8a]/25 text-[#0d8a8a]"
+                          style={{ background: "rgba(13,138,138,0.07)" }}
                         >
-                          +
+                          {proj.badge}
                         </span>
-                      </button>
-                      {openSections.has(id) && (
-                        <motion.div
-                          initial={{ opacity: 0, y: -6 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.2 }}
-                          className="px-6 pb-5"
-                        >
-                          {content}
-                        </motion.div>
-                      )}
+                      </div>
+                      <p className="text-[#6b5a4a] text-sm leading-relaxed">{proj.overviewP1}</p>
+                      <p className="text-[#6b5a4a] text-sm leading-relaxed mt-2">{proj.overviewP2}</p>
                     </div>
-                  ))}
-                </div>
-              </div>
+                    <div className="h-px mx-6" style={{ background: "rgba(13,138,138,0.12)" }} />
+                    <div className="divide-y divide-[#0d8a8a]/10">
+                      {sections.map(({ id, label, content }) => (
+                        <div key={id}>
+                          <button
+                            onClick={() => toggleSection(id)}
+                            className="w-full flex items-center justify-between px-6 py-4 text-left transition-colors hover:bg-[#0d8a8a]/5"
+                          >
+                            <span className="text-sm font-semibold text-[#1a1410]">{label}</span>
+                            <span
+                              className="text-[#0d8a8a] text-lg font-light leading-none transition-transform duration-200"
+                              style={{ transform: openSections.has(id) ? "rotate(45deg)" : "rotate(0deg)" }}
+                            >
+                              +
+                            </span>
+                          </button>
+                          {openSections.has(id) && (
+                            <motion.div
+                              initial={{ opacity: 0, y: -6 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="px-6 pb-5"
+                            >
+                              {content}
+                            </motion.div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
             {/* Personal */}
             <div className="space-y-5">
               <p className="text-[#c4622d] font-bold text-xs tracking-widest uppercase">Personal</p>
-              <p className="text-[#6b5a4a] text-sm leading-relaxed -mt-2">
-                Outside of work, I build things for myself: to learn, to solve something that was bothering me, or just because I was curious what would happen if I tried. More coming here soon.
-              </p>
-
+              <p className="text-[#6b5a4a] text-sm leading-relaxed -mt-2">{b.personalIntro}</p>
               <div className="grid sm:grid-cols-2 gap-5">
-                {[
-                  { title: "Project coming soon", description: "Something I've been working on. Details and a screenshot on the way." },
-                  { title: "More in the works", description: "A few other things in progress. Check back soon." },
-                ].map((item, i) => (
+                {b.personalProjects.map((item) => (
                   <div
-                    key={i}
+                    key={item.id}
                     className="rounded-2xl border border-[#e8ddd0] bg-white/60 overflow-hidden flex flex-col"
                   >
-                    {/* Screenshot placeholder */}
-                    <div
-                      className="w-full h-40 flex items-center justify-center"
-                      style={{ background: "linear-gradient(135deg, #f5e8d0 0%, #ede0cc 100%)" }}
-                    >
-                      <span className="text-[#c4622d]/30 text-xs font-medium tracking-widest uppercase">Screenshot coming soon</span>
-                    </div>
+                    {item.imageUrl ? (
+                      <img src={item.imageUrl} alt={item.title} className="w-full h-40 object-cover" />
+                    ) : (
+                      <div
+                        className="w-full h-40 flex items-center justify-center"
+                        style={{ background: "linear-gradient(135deg, #f5e8d0 0%, #ede0cc 100%)" }}
+                      >
+                        <span className="text-[#c4622d]/30 text-xs font-medium tracking-widest uppercase">Screenshot coming soon</span>
+                      </div>
+                    )}
                     <div className="px-5 py-4 flex flex-col gap-1">
                       <p className="font-semibold text-[#1a1410] text-sm">{item.title}</p>
                       <p className="text-[#6b5a4a] text-xs leading-relaxed">{item.description}</p>
@@ -663,7 +638,8 @@ export function JourneyTabs({
               </div>
             </div>
           </div>
-        )}
+          );
+        })()}
 
         {/* Contact */}
         {active === "Contact" && (
