@@ -46,7 +46,7 @@ interface JourneyTabsProps {
   skills: string[];
   contact: { email?: string | null; location?: string | null; phone?: string | null };
   links: { linkedin?: string | null; github?: string | null };
-  education: Array<{ institution: string; degree: string; field: string; start?: string | null; end?: string | null }>;
+  education: Array<{ institution: string; degree: string; field: string; start?: string | null; end?: string | null; location?: string | null }>;
   certifications: string[];
   languages: string[];
   clients: { b2b: string[]; b2c: string[] };
@@ -88,8 +88,9 @@ export function JourneyTabs({
             <motion.button
               key={`mob-${tab}`}
               onClick={() => setActive(tab)}
+              whileHover={{ scale: 1.08, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.15 }}
+              transition={{ type: "spring", stiffness: 380, damping: 18 }}
               className="px-4 py-1.5 rounded-full text-xs font-semibold cursor-pointer"
               style={{
                 background: active === tab ? "#c4622d" : "#1a1410",
@@ -154,9 +155,10 @@ export function JourneyTabs({
                 </p>
                 <div className="space-y-2">
                   {education.map((edu, i) => (
-                    <div key={i} className="rounded-xl border border-[#e8ddd0] bg-white/60 px-5 py-4">
+                    <div key={i} className="rounded-xl border border-[#e8ddd0] bg-white/60 px-5 py-4 transition-all duration-150 hover:scale-[1.02] hover:-translate-y-0.5 hover:shadow-md hover:border-[#c4622d]/40 hover:bg-white cursor-default">
                       <p className="font-heading font-semibold text-[#1a1410]">{edu.institution}</p>
                       <p className="text-[#6b5a4a] text-sm">{edu.degree} · {edu.field}</p>
+                      {edu.location && <p className="text-[#6b5a4a]/60 text-xs mt-0.5">{edu.location}</p>}
                     </div>
                   ))}
                 </div>
@@ -170,7 +172,7 @@ export function JourneyTabs({
                 </p>
                 <div className="space-y-2">
                   {affiliations.map((aff, i) => (
-                    <div key={i} className="flex items-center gap-4 rounded-xl border border-[#e8ddd0] bg-white/60 px-5 py-4">
+                    <div key={i} className="flex items-center gap-4 rounded-xl border border-[#e8ddd0] bg-white/60 px-5 py-4 transition-all duration-150 hover:scale-[1.02] hover:-translate-y-0.5 hover:shadow-md hover:border-[#c4622d]/40 hover:bg-white cursor-default">
                       {aff.logoUrl && (
                         <img
                           src={aff.logoUrl}
