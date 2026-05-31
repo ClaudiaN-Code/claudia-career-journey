@@ -58,6 +58,7 @@ export function JourneyTabs({
 }: JourneyTabsProps) {
   const [active, setActive] = useState<Tab>("About");
   const [openSections, setOpenSections] = useState<Set<string>>(new Set());
+  const [carouselIdx, setCarouselIdx] = useState<Record<string, number>>({});
   const resumePdfEnabled = !!(resumeData as typeof resumeData & { resumePdf?: boolean | null }).resumePdf;
 
   const toggleSection = (id: string) => {
@@ -614,27 +615,67 @@ export function JourneyTabs({
               <p className="text-[#c4622d] font-bold text-xs tracking-widest uppercase">Personal</p>
               <p className="text-[#6b5a4a] text-sm leading-relaxed -mt-2">{b.personalIntro}</p>
               <div className="grid sm:grid-cols-2 gap-5">
-                {b.personalProjects.map((item) => (
-                  <div
-                    key={item.id}
-                    className="rounded-2xl border border-[#e8ddd0] bg-white/60 overflow-hidden flex flex-col"
-                  >
-                    {item.imageUrl ? (
-                      <img src={item.imageUrl} alt={item.title} className="w-full h-40 object-cover" />
-                    ) : (
-                      <div
-                        className="w-full h-40 flex items-center justify-center"
-                        style={{ background: "linear-gradient(135deg, #f5e8d0 0%, #ede0cc 100%)" }}
-                      >
-                        <span className="text-[#c4622d]/30 text-xs font-medium tracking-widest uppercase">Screenshot coming soon</span>
+                {b.personalProjects.map((item) => {
+                  const imgs = (item as typeof item & { imageUrls?: string[] }).imageUrls ?? [];
+                  const idx = carouselIdx[item.id] ?? 0;
+                  const prev = () => setCarouselIdx(c => ({ ...c, [item.id]: (idx - 1 + imgs.length) % imgs.length }));
+                  const next = () => setCarouselIdx(c => ({ ...c, [item.id]: (idx + 1) % imgs.length }));
+                  return (
+                    <div
+                      key={item.id}
+                      className="rounded-2xl border border-[#e8ddd0] bg-white/60 overflow-hidden flex flex-col"
+                    >
+                      {imgs.length > 0 ? (
+                        <div className="relative w-full h-44 overflow-hidden" style={{ background: "#f5e8d0" }}>
+                          <img
+                            src={imgs[idx]}
+                            alt={`${item.title} screenshot ${idx + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                          {imgs.length > 1 && (
+                            <>
+                              <button
+                                onClick={prev}
+                                className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center text-xs transition-opacity hover:opacity-100 opacity-70"
+                                style={{ background: "rgba(26,20,16,0.55)", color: "#faf9f6" }}
+                              >
+                                ‹
+                              </button>
+                              <button
+                                onClick={next}
+                                className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center text-xs transition-opacity hover:opacity-100 opacity-70"
+                                style={{ background: "rgba(26,20,16,0.55)", color: "#faf9f6" }}
+                              >
+                                ›
+                              </button>
+                              <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5">
+                                {imgs.map((_, i) => (
+                                  <button
+                                    key={i}
+                                    onClick={() => setCarouselIdx(c => ({ ...c, [item.id]: i }))}
+                                    className="w-1.5 h-1.5 rounded-full transition-all"
+                                    style={{ background: i === idx ? "#faf9f6" : "rgba(250,249,246,0.45)" }}
+                                  />
+                                ))}
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      ) : (
+                        <div
+                          className="w-full h-44 flex items-center justify-center"
+                          style={{ background: "linear-gradient(135deg, #f5e8d0 0%, #ede0cc 100%)" }}
+                        >
+                          <span className="text-[#c4622d]/30 text-xs font-medium tracking-widest uppercase">Screenshot coming soon</span>
+                        </div>
+                      )}
+                      <div className="px-5 py-4 flex flex-col gap-1">
+                        <p className="font-semibold text-[#1a1410] text-sm">{item.title}</p>
+                        <p className="text-[#6b5a4a] text-xs leading-relaxed">{item.description}</p>
                       </div>
-                    )}
-                    <div className="px-5 py-4 flex flex-col gap-1">
-                      <p className="font-semibold text-[#1a1410] text-sm">{item.title}</p>
-                      <p className="text-[#6b5a4a] text-xs leading-relaxed">{item.description}</p>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>

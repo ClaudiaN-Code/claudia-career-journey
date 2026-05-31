@@ -490,7 +490,7 @@ function WritingSection() {
 
 // ── BUILDS & PROJECTS SECTION ────────────────────────────────────────────────
 type ImpactItem = { label: string; detail: string };
-type PersonalProject = { id: string; title: string; description: string; imageUrl: string | null };
+type PersonalProject = { id: string; title: string; description: string; imageUrls: string[] };
 type WorkProject = typeof buildsRaw.workProjects[number];
 type BuildsData = Omit<typeof buildsRaw, "workProjects" | "personalProjects"> & {
   workProjects: WorkProject[];
@@ -503,7 +503,8 @@ function BuildsSection() {
   const [editingPersonalIdx, setEditingPersonalIdx] = useState<number | null>(null);
   const [showNewPersonal, setShowNewPersonal] = useState(false);
   const [editingWorkIdx, setEditingWorkIdx] = useState<number | null>(null);
-  const blankPersonal: PersonalProject = { id: Date.now().toString(), title: "", description: "", imageUrl: null };
+  const blankPersonal: PersonalProject = { id: Date.now().toString(), title: "", description: "", imageUrls: [] };
+  const [newImageUrl, setNewImageUrl] = useState("");
   const [personalDraft, setPersonalDraft] = useState<PersonalProject>(blankPersonal);
 
   async function save() {
@@ -659,7 +660,51 @@ function BuildsSection() {
           <div className="rounded-xl p-5 space-y-4" style={{ background: "#2a2018", border: "1px solid #3a2e22" }}>
             <Field label="Title"><Input value={personalDraft.title} onChange={e => setPersonalDraft({ ...personalDraft, title: e.target.value })} /></Field>
             <Field label="Description"><Textarea rows={2} value={personalDraft.description} onChange={e => setPersonalDraft({ ...personalDraft, description: e.target.value })} /></Field>
-            <Field label="Image URL (optional — paste a hosted image URL)"><Input value={personalDraft.imageUrl ?? ""} onChange={e => setPersonalDraft({ ...personalDraft, imageUrl: e.target.value || null })} placeholder="https://..." /></Field>
+            <Field label="Screenshots (add one URL at a time — supports multiple)">
+              <div className="space-y-2">
+                {personalDraft.imageUrls.map((url, i) => (
+                  <div key={i} className="flex gap-2 items-center">
+                    <Input
+                      value={url}
+                      onChange={e => {
+                        const next = [...personalDraft.imageUrls];
+                        next[i] = e.target.value;
+                        setPersonalDraft({ ...personalDraft, imageUrls: next });
+                      }}
+                      className="flex-1 text-xs"
+                      placeholder="https://..."
+                    />
+                    <button
+                      onClick={() => setPersonalDraft({ ...personalDraft, imageUrls: personalDraft.imageUrls.filter((_, j) => j !== i) })}
+                      className="text-red-400 text-lg leading-none px-1 hover:text-red-300"
+                    >&times;</button>
+                  </div>
+                ))}
+                <div className="flex gap-2">
+                  <Input
+                    value={newImageUrl}
+                    onChange={e => setNewImageUrl(e.target.value)}
+                    onKeyDown={e => {
+                      if (e.key === "Enter" && newImageUrl.trim()) {
+                        setPersonalDraft({ ...personalDraft, imageUrls: [...personalDraft.imageUrls, newImageUrl.trim()] });
+                        setNewImageUrl("");
+                      }
+                    }}
+                    placeholder="Paste image URL and press Enter or Add"
+                    className="flex-1 text-xs"
+                  />
+                  <button
+                    onClick={() => {
+                      if (!newImageUrl.trim()) return;
+                      setPersonalDraft({ ...personalDraft, imageUrls: [...personalDraft.imageUrls, newImageUrl.trim()] });
+                      setNewImageUrl("");
+                    }}
+                    className="px-3 py-2 rounded-lg text-xs font-semibold text-white shrink-0"
+                    style={{ background: "#c4622d" }}
+                  >Add</button>
+                </div>
+              </div>
+            </Field>
             <div className="flex gap-2">
               <button onClick={commitPersonal} className="px-4 py-2 rounded-lg text-xs font-semibold text-white" style={{ background: "#c4622d" }}>{showNewPersonal ? "Add" : "Update"}</button>
               <button onClick={() => { setEditingPersonalIdx(null); setShowNewPersonal(false); }} className="px-4 py-2 rounded-lg text-xs font-semibold text-[#a09080]" style={{ background: "#1a1410", border: "1px solid #3a2e22" }}>Cancel</button>
