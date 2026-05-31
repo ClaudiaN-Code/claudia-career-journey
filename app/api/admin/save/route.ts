@@ -5,22 +5,6 @@ const OWNER = "ClaudiaN-Code";
 const REPO = "claudia-career-journey";
 const BRANCH = "main";
 
-async function getFileSHA(filePath: string, token: string): Promise<string> {
-  const res = await fetch(
-    `https://api.github.com/repos/${OWNER}/${REPO}/contents/${filePath}?ref=${BRANCH}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: "application/vnd.github.v3+json",
-      },
-      cache: "no-store",
-    }
-  );
-  const data = await res.json();
-  if (!data.sha) throw new Error(`Could not get SHA for ${filePath}: ${JSON.stringify(data)}`);
-  return data.sha;
-}
-
 export async function POST(request: Request) {
   const cookieStore = await cookies();
   const token = cookieStore.get("admin_token")?.value;
@@ -37,7 +21,29 @@ export async function POST(request: Request) {
   const { filePath, content, commitMessage } = await request.json();
 
   try {
-    const sha = await getFileSHA(filePath, githubToken);
+    // Fetch current file to get SHA and existing content
+    const currentRes = await fetch(
+      `https://api.github.com/repos/${OWNER}/${REPO}/contents/${filePath}?ref=${BRANCH}`,
+      {
+        headers: { Authorization: `Bearer ${githubToken}`, Accept: "application/vnd.github.v3+json" },
+        cache: "no-store",
+      }
+    );
+    const currentData = await currentRes.json();
+    if (!currentData.sha) throw new Error(`Could not get SHA for ${filePath}: ${JSON.stringify(currentData)}`);
+
+    // For JSON files, merge incoming over existing so fields the admin
+    // doesn't manage (e.g. affiliations) are never clobbered
+    let finalContent = content;
+    if (filePath.endsWith(".json") && currentData.content) {
+      try {
+        const existing = JSON.parse(Buffer.from(currentData.content, "base64").toString("utf-8"));
+        const incoming = JSON.parse(content);
+        finalContent = JSON.stringify({ ...existing, ...incoming }, null, 2);
+      } catch {
+        // Not parseable — fall back to raw content
+      }
+    }
 
     const res = await fetch(
       `https://api.github.com/repos/${OWNER}/${REPO}/contents/${filePath}`,
@@ -50,8 +56,8 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
           message: commitMessage || `Admin: update ${filePath}`,
-          content: Buffer.from(content).toString("base64"),
-          sha,
+          content: Buffer.from(finalContent).toString("base64"),
+          sha: currentData.sha,
           branch: BRANCH,
         }),
       }
