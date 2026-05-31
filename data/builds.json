@@ -1,7 +1,7 @@
 {
   "intro": "This is where I get to show, not just tell. Some of what I've built lives at work, behind the scenes of a research project or an ops workflow, solving a real problem for a real team. Some of it lives in my own time, made out of curiosity, a problem I wanted to solve, or just the satisfaction of figuring something out.",
   "workIntro": "Tools and agents I've built to make operations smoother, faster, and more consistent. These live inside real workflows and solve real problems: the kind of friction that doesn't show up in a job description but quietly takes up a lot of time.",
-  "personalIntro": "Outside of work, I build things for myself: to learn, to solve something that was bothering me, or just because I was curious what would happen if I tried. More coming here soon.",
+  "personalIntro": "Outside of work, I build things for myself: to learn, to solve something that was bothering me, or just because I was curious what would happen if I tried. Baking has always been one of the ways I show up for the people I love, and it turns out building tools for it is just as satisfying.",
   "workProjects": [
     {
       "id": "research-pm-agent",
@@ -37,13 +37,13 @@
   ],
   "personalProjects": [
     {
-      "id": "placeholder-1",
-      "title": "Project coming soon",
-      "description": "Something I've been working on. Details and a screenshot on the way.",
+      "id": "tres-hearts-baker",
+      "title": "Tres Hearts Baker",
+      "description": "Baking is one of the ways I show up for the people I love. I built Tres Hearts Baker as a personal recipe box to keep all of it in one place: recipes I am testing, ones I have perfected, and the ones I keep coming back to. It includes an AI recipe helper, batch import, and a cottage food label generator for when I sell my bakes.",
       "imageUrl": null
     },
     {
-      "id": "placeholder-2",
+      "id": "placeholder-1",
       "title": "More in the works",
       "description": "A few other things in progress. Check back soon.",
       "imageUrl": null
