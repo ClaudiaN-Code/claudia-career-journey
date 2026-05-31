@@ -24,12 +24,30 @@
         "Drafts daily client-ready status updates based on email activity"
       ],
       "businessImpactItems": [
-        { "label": "Faster profile review", "detail": "Reduces time spent manually reformatting and evaluating vendor submissions." },
-        { "label": "Improved consistency", "detail": "Ensures all vendors provide respondent information in a standardized format." },
-        { "label": "Stronger recruiting quality", "detail": "Helps identify incomplete, weak, or potentially misaligned candidates earlier." },
-        { "label": "Cleaner client deliverables", "detail": "Creates a more polished and consistent profile review experience." },
-        { "label": "Reduced operational risk", "detail": "Prevents disclosure of client identity, sensitive qualification logic, and respondent PII." },
-        { "label": "Scalable process foundation", "detail": "A repeatable workflow that grows with the company." }
+        {
+          "label": "Faster profile review",
+          "detail": "Reduces time spent manually reformatting and evaluating vendor submissions."
+        },
+        {
+          "label": "Improved consistency",
+          "detail": "Ensures all vendors provide respondent information in a standardized format."
+        },
+        {
+          "label": "Stronger recruiting quality",
+          "detail": "Helps identify incomplete, weak, or potentially misaligned candidates earlier."
+        },
+        {
+          "label": "Cleaner client deliverables",
+          "detail": "Creates a more polished and consistent profile review experience."
+        },
+        {
+          "label": "Reduced operational risk",
+          "detail": "Prevents disclosure of client identity, sensitive qualification logic, and respondent PII."
+        },
+        {
+          "label": "Scalable process foundation",
+          "detail": "A repeatable workflow that grows with the company."
+        }
       ],
       "docsP1": "The agent is supported by documentation that makes it usable by anyone on the project team, not just me. It covers the agent's purpose and use case, the inputs required before it can produce outputs (kick-off decks, screeners, must-have criteria, exclusion logic), and a step-by-step standard workflow from project initialization through client-ready status updates.",
       "docsP2": "Output types are clearly defined: profile grids, QA reviews, risk flags, follow-up questions, blind-safe recruiter feedback, client-facing summaries, and daily status drafts. Privacy guardrails are built into the documentation, and the review process is explicit: the agent supports judgment, it doesn't replace it. Final decisions stay with the project lead."
@@ -39,14 +57,14 @@
     {
       "id": "tres-hearts-baker",
       "title": "Tres Hearts Baker Recipe Box",
-      "description": "Baking is a passion of mine is one of the ways I show up for the people I love. Tres Hearts Baker started as a social media brand last summer in 2025. I created it to inspire beginner bakers, share helpful tips, and document the things I make.\n\nMost of my recipes used to live in a binder, so I built a digital recipe box using Claude Code to keep everything in one place: recipes I'm testing, recipes I've perfected, and the ones I keep coming back to. The site includes an AI recipe helper, batch import, and an admin area where I can easily update and manage my recipes.",
-      "imageUrls": []
+      "description": "Baking is a passion of mine is one of the ways I show up for the people I love. Tres Hearts Baker started as a social media brand last summer in 2025. I created it to inspire beginner bakers, share helpful tips, and document the things I make.\n\nMost of my recipes used to live in a binder, so I built a digital recipe box using Claude Code to keep everything in one place: recipes I’m testing, recipes I’ve perfected, and the ones I keep coming back to. The site includes an AI recipe helper, batch import, and an admin area where I can easily update and manage my recipes.",
+      "imageUrl": null
     },
     {
       "id": "placeholder-1",
       "title": "More in the works",
       "description": "A few other things in progress. Check back soon.",
-      "imageUrls": []
+      "imageUrl": null
     }
   ]
 }
