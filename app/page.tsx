@@ -22,8 +22,6 @@ export default function Home() {
         summary={summary}
         experience={experience}
         skills={skills}
-        contact={contact}
-        links={links}
         education={education}
         certifications={certifications ?? []}
         languages={languages ?? []}

@@ -62,16 +62,13 @@ export function Hero({ name, headline, tagline }: HeroProps) {
               >
                 See my journey ↓
               </a>
-              <button
-                onClick={() => {
-                  window.location.hash = "contact";
-                  document.getElementById("journey")?.scrollIntoView({ behavior: "smooth" });
-                }}
+              <a
+                href="#contact"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all hover:opacity-80"
                 style={{ background: "#1a1410", color: "#faf9f6" }}
               >
                 Contact
-              </button>
+              </a>
             </div>
           </div>
 

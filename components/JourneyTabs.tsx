@@ -9,7 +9,7 @@ import postsData from "@/data/posts.json";
 import resumeData from "@/data/resume.json";
 import buildsData from "@/data/builds.json";
 
-const TABS = ["About", "Professional History", "Skills & Tools", "Clients", "Recommendations", "Writing", "Builds & Projects", "Contact"] as const;
+const TABS = ["About", "Professional History", "Skills & Tools", "Clients", "Recommendations", "Writing", "Builds & Projects"] as const;
 type Tab = (typeof TABS)[number];
 
 interface AdditionalRole {
@@ -44,8 +44,6 @@ interface JourneyTabsProps {
   summary: string;
   experience: ExperienceEntry[];
   skills: string[];
-  contact: { email?: string | null; location?: string | null; phone?: string | null };
-  links: { linkedin?: string | null; github?: string | null };
   education: Array<{ institution: string; degree: string; field: string; start?: string | null; end?: string | null; location?: string | null }>;
   certifications: string[];
   languages: string[];
@@ -57,8 +55,6 @@ export function JourneyTabs({
   summary,
   experience,
   skills,
-  contact,
-  links,
   education,
   certifications,
   languages,
@@ -68,19 +64,7 @@ export function JourneyTabs({
   const [active, setActive] = useState<Tab>("About");
   const [openSections, setOpenSections] = useState<Set<string>>(new Set());
 
-  useEffect(() => {
-    const hashToTab: Partial<Record<string, Tab>> = { contact: "Contact" };
-    const checkHash = () => {
-      const hash = window.location.hash.replace("#", "");
-      const tab = hashToTab[hash];
-      if (tab) setActive(tab);
-    };
-    checkHash();
-    window.addEventListener("hashchange", checkHash);
-    return () => window.removeEventListener("hashchange", checkHash);
-  }, []);
   const [carouselIdx, setCarouselIdx] = useState<Record<string, number>>({});
-  const resumePdfEnabled = !!(resumeData as typeof resumeData & { resumePdf?: boolean | null }).resumePdf;
 
   const toggleSection = (id: string) => {
     setOpenSections(prev => {
@@ -734,75 +718,6 @@ export function JourneyTabs({
           );
         })()}
 
-        {/* Contact */}
-        {active === "Contact" && (
-          <div className="space-y-8">
-            <div>
-              <h2
-                className="font-bold text-2xl text-[#1a1410] mb-3"
-                style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
-              >
-                Let&apos;s Connect
-              </h2>
-              <p className="text-[#6b5a4a] text-base leading-relaxed">
-                If you are looking for someone who is fully invested, not just in the work but in the people and the company behind it, I would love to connect.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              {links.linkedin && (
-                <a
-                  href={links.linkedin.startsWith("http") ? links.linkedin : `https://${links.linkedin}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 rounded-full border border-[#e8ddd0] bg-white/60 px-4 py-2.5 hover:border-[#c4622d]/40 hover:bg-white transition-all"
-                >
-                  <span className="text-[#c4622d] font-bold text-xs">in</span>
-                  <span className="text-[#1a1410] text-sm font-medium">LinkedIn</span>
-                </a>
-              )}
-
-              {contact.email && (
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="flex items-center gap-2.5 rounded-full border border-[#e8ddd0] bg-white/60 px-4 py-2.5 hover:border-[#c4622d]/40 hover:bg-white transition-all"
-                >
-                  <span className="text-[#c4622d] text-xs">@</span>
-                  <span className="text-[#1a1410] text-sm font-medium">{contact.email}</span>
-                </a>
-              )}
-
-              {contact.phone && (
-                <a
-                  href={`tel:${contact.phone}`}
-                  className="flex items-center gap-2.5 rounded-full border border-[#e8ddd0] bg-white/60 px-4 py-2.5 hover:border-[#c4622d]/40 hover:bg-white transition-all"
-                >
-                  <span className="text-[#c4622d] text-xs">✆</span>
-                  <span className="text-[#1a1410] text-sm font-medium">{contact.phone}</span>
-                </a>
-              )}
-
-              {contact.location && (
-                <div className="flex items-center gap-2.5 rounded-full border border-[#e8ddd0] bg-white/60 px-4 py-2.5">
-                  <span className="text-[#c4622d] text-xs">📍</span>
-                  <span className="text-[#1a1410] text-sm font-medium">{contact.location}</span>
-                </div>
-              )}
-
-              {resumePdfEnabled && (
-                <a
-                  href="/resume.pdf"
-                  download
-                  className="flex items-center gap-2.5 rounded-full border border-[#c4622d]/40 px-4 py-2.5 hover:bg-[#c4622d] hover:border-[#c4622d] transition-all group"
-                  style={{ background: "rgba(196,98,45,0.08)" }}
-                >
-                  <span className="text-[#c4622d] group-hover:text-white text-xs transition-colors">↓</span>
-                  <span className="text-[#c4622d] group-hover:text-white text-sm font-medium transition-colors">Download Resume</span>
-                </a>
-              )}
-            </div>
-          </div>
-        )}
 
       </div>
     </section>
