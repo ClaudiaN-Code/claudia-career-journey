@@ -498,7 +498,16 @@ type BuildsData = Omit<typeof buildsRaw, "workProjects" | "personalProjects"> & 
 };
 
 function BuildsSection() {
-  const [builds, setBuilds] = useState<BuildsData>(buildsRaw as BuildsData);
+  const [builds, setBuilds] = useState<BuildsData>(() => {
+    const raw = buildsRaw as BuildsData;
+    return {
+      ...raw,
+      personalProjects: raw.personalProjects.map(p => {
+        const legacy = p as PersonalProject & { imageUrl?: string | null };
+        return { ...p, imageUrls: p.imageUrls?.length ? p.imageUrls : (legacy.imageUrl ? [legacy.imageUrl] : []) };
+      }),
+    };
+  });
   const [status, setStatus] = useState<SaveStatus>("idle");
   const [editingPersonalIdx, setEditingPersonalIdx] = useState<number | null>(null);
   const [showNewPersonal, setShowNewPersonal] = useState(false);
