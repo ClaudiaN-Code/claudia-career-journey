@@ -17,8 +17,6 @@ export default function Home() {
         headline={headline}
         tagline={tagline}
         linkedin={links.linkedin ?? undefined}
-        email={contact.email ?? undefined}
-        location={contact.location ?? undefined}
       />
       <JourneyTabs
         summary={summary}

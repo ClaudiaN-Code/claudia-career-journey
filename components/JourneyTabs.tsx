@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Milestone } from "./Milestone";
 import { MotionMilestone } from "./MotionMilestone";
@@ -67,6 +67,18 @@ export function JourneyTabs({
 }: JourneyTabsProps) {
   const [active, setActive] = useState<Tab>("About");
   const [openSections, setOpenSections] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    const hashToTab: Partial<Record<string, Tab>> = { contact: "Contact" };
+    const checkHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      const tab = hashToTab[hash];
+      if (tab) setActive(tab);
+    };
+    checkHash();
+    window.addEventListener("hashchange", checkHash);
+    return () => window.removeEventListener("hashchange", checkHash);
+  }, []);
   const [carouselIdx, setCarouselIdx] = useState<Record<string, number>>({});
   const resumePdfEnabled = !!(resumeData as typeof resumeData & { resumePdf?: boolean | null }).resumePdf;
 

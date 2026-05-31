@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 
 interface HeroProps {
@@ -5,11 +7,9 @@ interface HeroProps {
   headline: string;
   tagline?: string;
   linkedin?: string;
-  email?: string;
-  location?: string;
 }
 
-export function Hero({ name, headline, tagline, linkedin, email, location }: HeroProps) {
+export function Hero({ name, headline, tagline }: HeroProps) {
   const firstName = name.split(" ")[0];
 
   return (
@@ -55,44 +55,23 @@ export function Hero({ name, headline, tagline, linkedin, email, location }: Her
               </p>
             )}
 
-            <div className="flex flex-wrap gap-3 justify-center md:justify-start">
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <a
                 href="#journey"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm border border-[#c4622d]/40 text-[#c4622d] hover:border-[#c4622d] hover:bg-[#c4622d]/5 transition-all"
               >
                 See my journey ↓
               </a>
-              {linkedin && (
-                <a
-                  href={linkedin.startsWith("http") ? linkedin : `https://${linkedin}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full font-semibold text-sm transition-all hover:opacity-80"
-                  style={{ background: "#1a1410", color: "#faf9f6" }}
-                >
-                  <span className="font-bold text-xs">in</span>
-                  LinkedIn
-                </a>
-              )}
-              {email && (
-                <a
-                  href={`mailto:${email}`}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full font-semibold text-sm transition-all hover:opacity-80"
-                  style={{ background: "#1a1410", color: "#faf9f6" }}
-                >
-                  <span className="text-xs opacity-70">@</span>
-                  {email}
-                </a>
-              )}
-              {location && (
-                <span
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-full font-semibold text-sm"
-                  style={{ background: "#1a1410", color: "#faf9f6" }}
-                >
-                  <span className="text-xs opacity-70">📍</span>
-                  {location}
-                </span>
-              )}
+              <button
+                onClick={() => {
+                  window.location.hash = "contact";
+                  document.getElementById("journey")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all hover:opacity-80"
+                style={{ background: "#1a1410", color: "#faf9f6" }}
+              >
+                Contact
+              </button>
             </div>
           </div>
 
