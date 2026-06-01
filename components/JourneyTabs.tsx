@@ -134,7 +134,7 @@ export function JourneyTabs({
           <div className="space-y-10">
             <div className="space-y-5">
               <h2
-                className="font-bold text-2xl text-[#1a1410] mb-1"
+                className="font-bold text-2xl text-[#1a1410] mb-3"
                 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
               >
                 The Full Picture
