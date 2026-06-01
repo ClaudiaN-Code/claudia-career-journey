@@ -1,7 +1,7 @@
 {
   "intro": "This is where I get to show, not just tell.\n\nSome of what I have built lives at work, behind the scenes of a research project or an ops workflow, solving a real problem for a real team. Some of it lives in my own time, born out of curiosity and exploration, a problem I wanted to solve, or just the satisfaction of figuring something out.",
-  "workIntro": "Tools and agents I've built to make operations smoother, faster, and more consistent. These live inside real workflows and solve he kind of problems that often become workarounds instead of getting fixed.",
-  "personalIntro": "On my own time, I build things to learn, to experiment, to fix something I have been wanting to solve, or just to see what happens when I try. Baking is one of my biggest passions and one of the ways I show up for the people I love. Building tools for it has been just as satisfying as I hoped.",
+  "workIntro": "Tools and agents I've built to make operations smoother, faster, and more consistent. These live inside real workflows and solve the kind of problems that often become workarounds instead of getting fixed.",
+  "personalIntro": "On my own time, I build things to learn, to experiment, to fix something I have been wanting to solve, or just to see what happens when I try. \n\nBaking is one of my biggest passions and one of the ways I show up for the people I love. Building tools for it has been just as satisfying as I hoped.",
   "workProjects": [
     {
       "id": "research-pm-agent",
