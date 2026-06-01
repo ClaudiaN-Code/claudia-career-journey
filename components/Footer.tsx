@@ -15,13 +15,13 @@ export function Footer({ name, linkedin, email }: FooterProps) {
               href={linkedin.startsWith("http") ? linkedin : `https://${linkedin}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-[#c4622d] transition-colors"
+              className="text-white/70 hover:text-[#c4622d] transition-colors"
             >
               LinkedIn
             </a>
           )}
           {email && (
-            <a href={`mailto:${email}`} className="hover:text-[#c4622d] transition-colors">
+            <a href={`mailto:${email}`} className="text-white/70 hover:text-[#c4622d] transition-colors">
               {email}
             </a>
           )}
