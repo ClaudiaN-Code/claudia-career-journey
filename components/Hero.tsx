@@ -49,7 +49,7 @@ export function Hero({ name, headline, tagline, resumePdfEnabled }: HeroProps) {
               style={{ fontSize: "clamp(1.1rem, 2vw, 1.5rem)" }}
             >
               {headline.split("\n").map((line, i) => (
-                <span key={i} className="block">{line}</span>
+                <span key={i} className="block md:inline">{line}</span>
               ))}
             </p>
 
