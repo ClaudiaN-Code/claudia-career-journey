@@ -62,6 +62,7 @@ export function Hero({ name, headline, tagline, resumePdfEnabled }: HeroProps) {
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <a
                 href="#journey"
+                onClick={() => window.dispatchEvent(new CustomEvent("setJourneyTab", { detail: "About" }))}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm border border-[#c4622d]/40 text-[#c4622d] hover:border-[#c4622d] hover:bg-[#c4622d]/5 hover:scale-105 hover:-translate-y-0.5 hover:shadow-md transition-all duration-150"
               >
                 See my journey ↓

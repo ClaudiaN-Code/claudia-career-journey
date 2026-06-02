@@ -67,6 +67,12 @@ export function JourneyTabs({
 
   const [carouselIdx, setCarouselIdx] = useState<Record<string, number>>({});
 
+  useEffect(() => {
+    const handler = (e: CustomEvent) => setActive(e.detail as Tab);
+    window.addEventListener("setJourneyTab", handler as EventListener);
+    return () => window.removeEventListener("setJourneyTab", handler as EventListener);
+  }, []);
+
   const toggleSection = (id: string) => {
     setOpenSections(prev => {
       const next = new Set(prev);
