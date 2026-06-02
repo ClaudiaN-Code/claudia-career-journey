@@ -169,17 +169,17 @@ export function JourneyTabs({
                 </p>
                 <div className="space-y-2">
                   {affiliations.map((aff, i) => (
-                    <div key={i} className="flex items-center gap-4 rounded-xl border border-[#e8ddd0] bg-white/60 px-5 py-4 transition-all duration-150 hover:scale-[1.02] hover:-translate-y-0.5 hover:shadow-md hover:border-[#c4622d]/40 hover:bg-white cursor-default">
+                    <div key={i} className="flex items-center gap-3 rounded-full border border-[#e8ddd0] bg-white/60 px-4 py-2 transition-all duration-150 hover:scale-[1.02] hover:-translate-y-0.5 hover:shadow-md hover:border-[#c4622d]/40 hover:bg-white cursor-default">
                       {aff.logoUrl && (
                         <img
                           src={aff.logoUrl}
                           alt={aff.name}
-                          className="w-10 h-10 rounded-full object-cover shrink-0"
+                          className="w-7 h-7 rounded-full object-cover shrink-0"
                         />
                       )}
                       <div>
-                        <p className="font-heading font-semibold text-[#1a1410]">{aff.name}</p>
-                        <p className="text-[#6b5a4a] text-sm">{aff.role} · Since {aff.since}</p>
+                        <p className="font-heading font-semibold text-[#1a1410] text-sm">{aff.name}</p>
+                        <p className="text-[#6b5a4a] text-xs">{aff.role} · Since {aff.since}</p>
                       </div>
                     </div>
                   ))}
