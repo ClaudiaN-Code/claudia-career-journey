@@ -7,7 +7,7 @@ import { JourneyTabs } from "@/components/JourneyTabs";
 import { CTA } from "@/components/CTA";
 
 export default function Home() {
-  const { name, headline, tagline, summary, contact, links, experience, skills, education, certifications, languages, clients, affiliations } = resumeData as typeof resumeData & { tagline?: string; clients?: { b2b: string[]; b2c: string[] }; affiliations?: { name: string; role: string; since: string; logoUrl?: string }[] };
+  const { name, headline, tagline, summary, contact, links, experience, skills, education, certifications, languages, clients, affiliations, resumePdf } = resumeData as typeof resumeData & { tagline?: string; clients?: { b2b: string[]; b2c: string[] }; affiliations?: { name: string; role: string; since: string; logoUrl?: string }[]; resumePdf?: boolean | null };
 
   return (
     <>
@@ -17,6 +17,7 @@ export default function Home() {
         headline={headline}
         tagline={tagline}
         linkedin={links.linkedin ?? undefined}
+        resumePdfEnabled={!!resumePdf}
       />
       <JourneyTabs
         summary={summary}

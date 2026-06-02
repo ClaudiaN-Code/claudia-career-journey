@@ -8,9 +8,10 @@ interface HeroProps {
   headline: string;
   tagline?: string;
   linkedin?: string;
+  resumePdfEnabled?: boolean;
 }
 
-export function Hero({ name, headline, tagline }: HeroProps) {
+export function Hero({ name, headline, tagline, resumePdfEnabled }: HeroProps) {
   const firstName = name.split(" ")[0];
 
   return (
@@ -63,6 +64,15 @@ export function Hero({ name, headline, tagline }: HeroProps) {
               >
                 See my journey ↓
               </a>
+              {resumePdfEnabled && (
+                <a
+                  href="/resume.pdf"
+                  download
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm border border-[#c4622d]/40 text-[#c4622d] hover:border-[#c4622d] hover:bg-[#c4622d]/5 transition-all"
+                >
+                  ↓ Download Resume
+                </a>
+              )}
               <a
                 href="#contact"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all hover:opacity-80"
