@@ -67,7 +67,7 @@ export function Hero({ name, headline, tagline, resumePdfEnabled }: HeroProps) {
               {resumePdfEnabled && (
                 <a
                   href="/resume.pdf"
-                  download
+                  download={`${name.replace(/\s+/g, "_")}_Resume.pdf`}
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm hover:scale-105 hover:-translate-y-0.5 hover:shadow-md transition-all duration-150"
                   style={{ background: "#c4622d", color: "#faf9f6" }}
                 >
