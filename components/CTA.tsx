@@ -10,6 +10,7 @@ export function CTA({ linkedin, email }: CTAProps) {
 
   return (
     <section
+      id="contact"
       className="py-24 px-6 text-center"
       style={{ background: "#1a1410" }}
     >

@@ -4,7 +4,6 @@ export const dynamic = "force-dynamic";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { JourneyTabs } from "@/components/JourneyTabs";
-import { Footer } from "@/components/Footer";
 import { CTA } from "@/components/CTA";
 
 export default function Home() {
@@ -30,11 +29,6 @@ export default function Home() {
         affiliations={affiliations ?? []}
       />
       <CTA
-        linkedin={links.linkedin ?? undefined}
-        email={contact.email ?? undefined}
-      />
-      <Footer
-        name={name}
         linkedin={links.linkedin ?? undefined}
         email={contact.email ?? undefined}
       />
