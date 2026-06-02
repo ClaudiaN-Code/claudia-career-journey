@@ -48,7 +48,9 @@ export function Hero({ name, headline, tagline, resumePdfEnabled }: HeroProps) {
               className="font-heading font-semibold text-[#c4622d] mb-5 leading-snug"
               style={{ fontSize: "clamp(1.1rem, 2vw, 1.5rem)" }}
             >
-              {headline}
+              {headline.split("\n").map((line, i) => (
+                <span key={i} className="block">{line}</span>
+              ))}
             </p>
 
             {tagline && (
