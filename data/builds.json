@@ -6,7 +6,7 @@
     {
       "id": "research-pm-agent",
       "title": "Research PM Agent",
-      "subtitle": "Recruiting QA · ContextualY, inc.",
+      "subtitle": "Recruiting QA \u00b7 ContextualY, inc.",
       "badge": "Internal Tool",
       "overviewP1": "As Head of Business Operations at ContextualY, one of my recurring challenges was that every recruiting vendor delivered respondent profiles in their own format: different fields, different terminology, different levels of detail. It made comparison slower, review messier, and client-facing documentation inconsistent. So I built something to fix it.",
       "overviewP2": "The Recruiting QA agent acts as a PM-grade quality layer for qualitative research recruiting. It standardizes profile grids, evaluates incoming respondents against screener criteria, flags risks, and produces clean, blind-safe feedback, all without exposing confidential client information or screening strategy.",
@@ -57,8 +57,13 @@
     {
       "id": "tres-hearts-baker",
       "title": "Tres Hearts Baker Recipe Box",
-      "description": "Baking is a passion of mine is one of the ways I show up for the people I love. \n\nTres Hearts Baker started as a social media brand last summer in 2025. I created it to inspire beginner bakers, share helpful tips, and document the things I make.\n\nMost of my recipes live in a binder, so I built a digital recipe box using Claude Code to keep everything in one place: recipes I’m testing, recipes I’ve perfected, and the ones I keep coming back to. The site includes an AI recipe helper, batch import, and an admin portal that allows me to easily update and manage my recipes.",
-      "imageUrls": []
+      "description": "Baking is a passion of mine is one of the ways I show up for the people I love. \n\nTres Hearts Baker started as a social media brand last summer in 2025. I created it to inspire beginner bakers, share helpful tips, and document the things I make.\n\nMost of my recipes live in a binder, so I built a digital recipe box using Claude Code to keep everything in one place: recipes I\u2019m testing, recipes I\u2019ve perfected, and the ones I keep coming back to. The site includes an AI recipe helper, batch import, and an admin portal that allows me to easily update and manage my recipes.",
+      "imageUrls": [
+        "/tres-hearts-home.png",
+        "/tres-hearts-library.png",
+        "/tres-hearts-upload.png",
+        "/tres-hearts-lab.png"
+      ]
     },
     {
       "id": "placeholder-1",
