@@ -1,3 +1,5 @@
+import contentData from "@/data/content.json";
+
 interface FooterProps {
   name: string;
   linkedin?: string;
@@ -28,7 +30,7 @@ export function Footer({ name, linkedin, email }: FooterProps) {
         </div>
       </div>
       <div className="max-w-7xl mx-auto mt-6 pt-6 border-t border-white/10 text-center text-xs text-white/25">
-        Designed and built by {name.split(" ")[0]} using Claude Code, GitHub, and Vercel.
+        {contentData.footer.credit}
       </div>
     </footer>
   );

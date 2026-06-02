@@ -1,0 +1,30 @@
+{
+  "hero": {
+    "eyebrow": "Career Journey"
+  },
+  "about": {
+    "heading": "The Full Picture"
+  },
+  "professionalHistory": {
+    "heading": "My Professional Journey"
+  },
+  "skills": {
+    "heading": "My Toolkit",
+    "intro": "These are the skills I rely on and the tools I have worked with across my career, reflecting how I actually operate: practically, collaboratively, and with an eye toward what genuinely moves work forward. The AI section reflects my curiosity and my ongoing effort to understand what these tools can actually do in a real work context."
+  },
+  "clients": {
+    "heading": "The Work in Practice",
+    "intro": "These are some of the companies I have supported directly, from project delivery and client services to the operational details that keep engagements running smoothly."
+  },
+  "recommendations": {
+    "heading": "In Their Own Words",
+    "intro": "Some of the people I have worked most closely with have also become some of my longest professional relationships. A few of them have brought me into their next companies because of the trust we built working together. Here is what some of them have said."
+  },
+  "writing": {
+    "heading": "In My Own Words",
+    "intro": "Things I have been thinking about and writing about on LinkedIn. I write about operations, alignment, and the practical side of how work actually gets done."
+  },
+  "footer": {
+    "credit": "Designed and built by Claudia using Claude Code, GitHub, and Vercel."
+  }
+}

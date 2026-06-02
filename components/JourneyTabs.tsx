@@ -8,6 +8,7 @@ import recommendationsData from "@/data/recommendations.json";
 import postsData from "@/data/posts.json";
 import resumeData from "@/data/resume.json";
 import buildsData from "@/data/builds.json";
+import contentData from "@/data/content.json";
 
 const TABS = ["About", "Professional History", "Skills & Tools", "Clients", "Builds & Projects", "Recommendations", "Writing"] as const;
 type Tab = (typeof TABS)[number];
@@ -137,7 +138,7 @@ export function JourneyTabs({
                 className="font-bold text-2xl text-[#1a1410] mb-3"
                 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
               >
-                The Full Picture
+                {contentData.about.heading}
               </h2>
               {summary.split("\n\n").map((para, i) => (
                 <p key={i} className="text-[#1a1410] text-base leading-relaxed">{para}</p>
@@ -240,7 +241,7 @@ export function JourneyTabs({
               className="font-bold text-2xl text-[#1a1410]"
               style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
             >
-              My Professional Journey
+              {contentData.professionalHistory.heading}
             </h2>
             <div className="relative">
               <div
@@ -296,10 +297,10 @@ export function JourneyTabs({
                 className="font-bold text-2xl text-[#1a1410] mb-3"
                 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
               >
-                My Toolkit
+                {contentData.skills.heading}
               </h2>
               <p className="text-[#6b5a4a] text-base leading-relaxed">
-                These are the skills I rely on and the tools I have worked with across my career, reflecting how I actually operate: practically, collaboratively, and with an eye toward what genuinely moves work forward. The AI section reflects my curiosity and my ongoing effort to understand what these tools can actually do in a real work context.
+                {contentData.skills.intro}
               </p>
             </div>
 
@@ -377,10 +378,10 @@ export function JourneyTabs({
                 className="font-bold text-2xl text-[#1a1410] mb-3"
                 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
               >
-                The Work in Practice
+                {contentData.clients.heading}
               </h2>
               <p className="text-[#6b5a4a] text-base leading-relaxed">
-                These are some of the companies I have supported directly, from project delivery and client services to the operational details that keep engagements running smoothly.
+                {contentData.clients.intro}
               </p>
             </div>
             {clients.b2b.length > 0 && (
@@ -423,10 +424,10 @@ export function JourneyTabs({
               className="font-bold text-2xl text-[#1a1410] mb-3"
               style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
             >
-              In Their Own Words
+              {contentData.recommendations.heading}
             </h2>
             <p className="text-[#6b5a4a] text-base leading-relaxed mb-8">
-              Some of the people I have worked most closely with have also become some of my longest professional relationships. A few of them have brought me into their next companies because of the trust we built working together. Here is what some of them have said.
+              {contentData.recommendations.intro}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {recommendationsData.map((rec, i) => (
@@ -472,10 +473,10 @@ export function JourneyTabs({
                 className="font-bold text-2xl text-[#1a1410] mb-3"
                 style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
               >
-                In My Own Words
+                {contentData.writing.heading}
               </h2>
               <p className="text-[#6b5a4a] text-base leading-relaxed">
-                Things I have been thinking about and writing about on LinkedIn. I write about operations, alignment, and the practical side of how work actually gets done.
+                {contentData.writing.intro}
               </p>
             </div>
 

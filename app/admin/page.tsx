@@ -6,8 +6,9 @@ import resumeRaw from "@/data/resume.json";
 import recsRaw from "@/data/recommendations.json";
 import postsRaw from "@/data/posts.json";
 import buildsRaw from "@/data/builds.json";
+import contentRaw from "@/data/content.json";
 
-type Tab = "Profile" | "Contact" | "Skills" | "Experience" | "Recommendations" | "Writing" | "Builds & Projects" | "Resume PDF";
+type Tab = "Profile" | "Contact" | "Skills" | "Experience" | "Recommendations" | "Writing" | "Builds & Projects" | "Site Text" | "Resume PDF";
 
 type SaveStatus = "idle" | "saving" | "saved" | "error";
 
@@ -488,6 +489,134 @@ function WritingSection() {
   );
 }
 
+// ── SITE TEXT SECTION ─────────────────────────────────────────────────────────
+type ContentData = typeof contentRaw;
+
+function SiteTextSection() {
+  const [content, setContent] = useState<ContentData>(contentRaw);
+  const [status, setStatus] = useState<SaveStatus>("idle");
+
+  function set(path: string[], value: string) {
+    setContent(prev => {
+      const next = JSON.parse(JSON.stringify(prev)) as ContentData;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let node: any = next;
+      for (let i = 0; i < path.length - 1; i++) node = node[path[i]];
+      node[path[path.length - 1]] = value;
+      return next;
+    });
+  }
+
+  async function save() {
+    setStatus("saving");
+    const err = await saveToGitHub("data/content.json", content, "site text");
+    setStatus(err ? "error" : "saved");
+    if (!err) setTimeout(() => setStatus("idle"), 4000);
+  }
+
+  const sections: { label: string; color: string; fields: { key: string[]; label: string; rows?: number }[] }[] = [
+    {
+      label: "Hero",
+      color: "#c4622d",
+      fields: [
+        { key: ["hero", "eyebrow"], label: "Eyebrow label (above your name)" },
+      ],
+    },
+    {
+      label: "About Tab",
+      color: "#c4622d",
+      fields: [
+        { key: ["about", "heading"], label: "Section heading" },
+      ],
+    },
+    {
+      label: "Professional History Tab",
+      color: "#c4622d",
+      fields: [
+        { key: ["professionalHistory", "heading"], label: "Section heading" },
+      ],
+    },
+    {
+      label: "Skills & Tools Tab",
+      color: "#0d8a8a",
+      fields: [
+        { key: ["skills", "heading"], label: "Section heading" },
+        { key: ["skills", "intro"], label: "Intro paragraph", rows: 3 },
+      ],
+    },
+    {
+      label: "Clients Tab",
+      color: "#c4622d",
+      fields: [
+        { key: ["clients", "heading"], label: "Section heading" },
+        { key: ["clients", "intro"], label: "Intro paragraph", rows: 3 },
+      ],
+    },
+    {
+      label: "Recommendations Tab",
+      color: "#c4622d",
+      fields: [
+        { key: ["recommendations", "heading"], label: "Section heading" },
+        { key: ["recommendations", "intro"], label: "Intro paragraph", rows: 3 },
+      ],
+    },
+    {
+      label: "Writing Tab",
+      color: "#c4622d",
+      fields: [
+        { key: ["writing", "heading"], label: "Section heading" },
+        { key: ["writing", "intro"], label: "Intro paragraph", rows: 3 },
+      ],
+    },
+    {
+      label: "Footer",
+      color: "#7a6a5a",
+      fields: [
+        { key: ["footer", "credit"], label: "Credit line" },
+      ],
+    },
+  ];
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function getValue(path: string[]): string {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let node: any = content;
+    for (const k of path) node = node[k];
+    return node as string;
+  }
+
+  return (
+    <div className="space-y-8">
+      <h2 className="text-lg font-bold text-[#faf9f6]">Site Text</h2>
+      <p className="text-sm" style={{ color: "#7a6a5a" }}>
+        Edit the headings and intro text shown across the site. Changes deploy in ~2 minutes.
+      </p>
+
+      {sections.map(({ label, color, fields }) => (
+        <div key={label} className="space-y-4">
+          <p className="text-xs font-semibold uppercase tracking-widest" style={{ color }}>{label}</p>
+          <div className="rounded-xl p-5 space-y-4" style={{ background: "#2a2018", border: "1px solid #3a2e22" }}>
+            {fields.map(({ key, label: fieldLabel, rows }) => (
+              <Field key={key.join(".")} label={fieldLabel}>
+                {rows ? (
+                  <Textarea rows={rows} value={getValue(key)} onChange={e => set(key, e.target.value)} />
+                ) : (
+                  <Input value={getValue(key)} onChange={e => set(key, e.target.value)} />
+                )}
+              </Field>
+            ))}
+          </div>
+        </div>
+      ))}
+
+      <div className="flex items-center gap-4">
+        <SaveBtn status={status} onClick={save} />
+        <SectionNote />
+      </div>
+    </div>
+  );
+}
+
 // ── BUILDS & PROJECTS SECTION ────────────────────────────────────────────────
 type ImpactItem = { label: string; detail: string };
 type PersonalProject = { id: string; title: string; description: string; imageUrls: string[] };
@@ -863,7 +992,7 @@ export default function AdminPage() {
     router.refresh();
   }
 
-  const TABS: Tab[] = ["Profile", "Contact", "Skills", "Experience", "Recommendations", "Writing", "Builds & Projects", "Resume PDF"];
+  const TABS: Tab[] = ["Profile", "Contact", "Skills", "Experience", "Recommendations", "Writing", "Builds & Projects", "Site Text", "Resume PDF"];
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: "#1a1410", color: "#faf9f6" }}>
@@ -907,6 +1036,7 @@ export default function AdminPage() {
           {active === "Recommendations" && <RecommendationsSection />}
           {active === "Writing" && <WritingSection />}
           {active === "Builds & Projects" && <BuildsSection />}
+          {active === "Site Text" && <SiteTextSection />}
           {active === "Resume PDF" && <ResumePdfSection resume={resume} setResume={setResume} />}
         </main>
       </div>

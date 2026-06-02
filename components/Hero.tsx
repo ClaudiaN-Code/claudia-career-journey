@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import contentData from "@/data/content.json";
 
 interface HeroProps {
   name: string;
@@ -32,7 +33,7 @@ export function Hero({ name, headline, tagline }: HeroProps) {
           {/* Left — text */}
           <div className="flex-1 min-w-0 text-center md:text-left">
             <p className="text-[#c4622d] font-medium text-sm tracking-widest uppercase mb-5">
-              Career Journey
+              {contentData.hero.eyebrow}
             </p>
 
             <h1
