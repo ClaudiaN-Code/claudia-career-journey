@@ -569,6 +569,16 @@ function SiteTextSection() {
       ],
     },
     {
+      label: "Call to Action",
+      color: "#c4622d",
+      fields: [
+        { key: ["cta", "heading"], label: "Heading" },
+        { key: ["cta", "body"], label: "Body text", rows: 2 },
+        { key: ["cta", "linkedinLabel"], label: "LinkedIn button label" },
+        { key: ["cta", "emailLabel"], label: "Email button label" },
+      ],
+    },
+    {
       label: "Footer",
       color: "#7a6a5a",
       fields: [

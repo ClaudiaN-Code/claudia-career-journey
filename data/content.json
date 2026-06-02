@@ -26,5 +26,11 @@
   },
   "footer": {
     "credit": "Designed and built by Claudia using Claude Code, GitHub, and Vercel."
+  },
+  "cta": {
+    "heading": "Let's talk.",
+    "body": "If you are looking for someone who is fully invested in the work and the people behind it, I would love to connect.",
+    "linkedinLabel": "Connect on LinkedIn",
+    "emailLabel": "Send me an email"
   }
 }
