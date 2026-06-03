@@ -66,11 +66,18 @@ export function JourneyTabs({
   const [openSections, setOpenSections] = useState<Set<string>>(new Set());
 
   const [carouselIdx, setCarouselIdx] = useState<Record<string, number>>({});
+  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
   useEffect(() => {
     const handler = (e: CustomEvent) => setActive(e.detail as Tab);
     window.addEventListener("setJourneyTab", handler as EventListener);
     return () => window.removeEventListener("setJourneyTab", handler as EventListener);
+  }, []);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setLightboxSrc(null); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   const toggleSection = (id: string) => {
@@ -82,6 +89,30 @@ export function JourneyTabs({
   };
 
   return (
+    <>
+    {lightboxSrc && (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+        onClick={() => setLightboxSrc(null)}
+      >
+        <motion.img
+          src={lightboxSrc}
+          alt="Screenshot"
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.2 }}
+          className="max-w-[92vw] max-h-[88vh] object-contain rounded-xl shadow-2xl"
+          onClick={e => e.stopPropagation()}
+        />
+        <button
+          onClick={() => setLightboxSrc(null)}
+          className="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-full text-white text-xl font-light hover:bg-white/20 transition-colors"
+          style={{ background: "rgba(0,0,0,0.45)" }}
+        >
+          ×
+        </button>
+      </div>
+    )}
     <section id="journey" className="pt-10 pb-16 px-4" style={{ background: "#f5e8d0" }}>
       <div className="max-w-3xl mx-auto">
 
@@ -669,7 +700,8 @@ export function JourneyTabs({
                           <img
                             src={imgs[idx]}
                             alt={`${item.title} screenshot ${idx + 1}`}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover cursor-zoom-in"
+                            onClick={() => setLightboxSrc(imgs[idx])}
                           />
                           {imgs.length > 1 && (
                             <>
@@ -728,5 +760,6 @@ export function JourneyTabs({
 
       </div>
     </section>
+    </>
   );
 }
