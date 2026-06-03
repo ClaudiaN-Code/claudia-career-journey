@@ -66,7 +66,7 @@ export function JourneyTabs({
   const [openSections, setOpenSections] = useState<Set<string>>(new Set());
 
   const [carouselIdx, setCarouselIdx] = useState<Record<string, number>>({});
-  const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const [lightbox, setLightbox] = useState<{ imgs: string[]; idx: number } | null>(null);
 
   useEffect(() => {
     const handler = (e: CustomEvent) => setActive(e.detail as Tab);
@@ -75,7 +75,11 @@ export function JourneyTabs({
   }, []);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setLightboxSrc(null); };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightbox(null);
+      if (e.key === "ArrowRight") setLightbox(prev => prev && prev.imgs.length > 1 ? { ...prev, idx: (prev.idx + 1) % prev.imgs.length } : prev);
+      if (e.key === "ArrowLeft") setLightbox(prev => prev && prev.imgs.length > 1 ? { ...prev, idx: (prev.idx - 1 + prev.imgs.length) % prev.imgs.length } : prev);
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
@@ -90,27 +94,67 @@ export function JourneyTabs({
 
   return (
     <>
-    {lightboxSrc && (
+    {lightbox && (
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
-        onClick={() => setLightboxSrc(null)}
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm"
+        onClick={() => setLightbox(null)}
       >
+        {/* Image */}
         <motion.img
-          src={lightboxSrc}
-          alt="Screenshot"
-          initial={{ opacity: 0, scale: 0.92 }}
+          key={lightbox.idx}
+          src={lightbox.imgs[lightbox.idx]}
+          alt={`Screenshot ${lightbox.idx + 1}`}
+          initial={{ opacity: 0, scale: 0.94 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.2 }}
-          className="max-w-[92vw] max-h-[88vh] object-contain rounded-xl shadow-2xl"
+          transition={{ duration: 0.18 }}
+          className="max-w-[88vw] max-h-[84vh] object-contain rounded-xl shadow-2xl"
           onClick={e => e.stopPropagation()}
         />
+
+        {/* Close */}
         <button
-          onClick={() => setLightboxSrc(null)}
+          onClick={() => setLightbox(null)}
           className="absolute top-5 right-5 w-10 h-10 flex items-center justify-center rounded-full text-white text-xl font-light hover:bg-white/20 transition-colors"
           style={{ background: "rgba(0,0,0,0.45)" }}
         >
           ×
         </button>
+
+        {/* Prev arrow */}
+        {lightbox.imgs.length > 1 && (
+          <button
+            onClick={e => { e.stopPropagation(); setLightbox(prev => prev ? { ...prev, idx: (prev.idx - 1 + prev.imgs.length) % prev.imgs.length } : prev); }}
+            className="absolute left-5 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full text-white text-2xl hover:bg-white/20 transition-colors"
+            style={{ background: "rgba(0,0,0,0.45)" }}
+          >
+            ‹
+          </button>
+        )}
+
+        {/* Next arrow */}
+        {lightbox.imgs.length > 1 && (
+          <button
+            onClick={e => { e.stopPropagation(); setLightbox(prev => prev ? { ...prev, idx: (prev.idx + 1) % prev.imgs.length } : prev); }}
+            className="absolute right-5 top-1/2 -translate-y-1/2 w-11 h-11 flex items-center justify-center rounded-full text-white text-2xl hover:bg-white/20 transition-colors"
+            style={{ background: "rgba(0,0,0,0.45)" }}
+          >
+            ›
+          </button>
+        )}
+
+        {/* Dot indicators */}
+        {lightbox.imgs.length > 1 && (
+          <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2">
+            {lightbox.imgs.map((_, i) => (
+              <button
+                key={i}
+                onClick={e => { e.stopPropagation(); setLightbox(prev => prev ? { ...prev, idx: i } : prev); }}
+                className="w-2 h-2 rounded-full transition-all"
+                style={{ background: i === lightbox.idx ? "#fff" : "rgba(255,255,255,0.35)" }}
+              />
+            ))}
+          </div>
+        )}
       </div>
     )}
     <section id="journey" className="pt-10 pb-16 px-4" style={{ background: "#f5e8d0" }}>
@@ -701,7 +745,7 @@ export function JourneyTabs({
                             src={imgs[idx]}
                             alt={`${item.title} screenshot ${idx + 1}`}
                             className="w-full h-full object-cover cursor-zoom-in"
-                            onClick={() => setLightboxSrc(imgs[idx])}
+                            onClick={() => setLightbox({ imgs, idx })}
                           />
                           {imgs.length > 1 && (
                             <>
