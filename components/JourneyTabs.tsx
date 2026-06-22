@@ -594,9 +594,49 @@ export function JourneyTabs({
 
         {/* Builds & Projects */}
         {active === "Builds & Projects" && (() => {
-          const b = buildsData;
+          const b = buildsData as typeof buildsData & {
+            workProjects: Array<{
+              id: string; title: string; subtitle: string; badge: string;
+              overview: string[];
+              sections: Array<{
+                id: string; label: string;
+                paragraphs?: string[];
+                bullets?: string[];
+                items?: { label: string; detail: string }[];
+              }>;
+            }>;
+          };
+
+          const renderSectionContent = (sec: typeof b.workProjects[0]["sections"][0]) => {
+            if (sec.bullets) return (
+              <ul className="space-y-2 text-sm text-[#6b5a4a]">
+                {sec.bullets.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#0d8a8a] shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            );
+            if (sec.items) return (
+              <div className="grid sm:grid-cols-2 gap-3">
+                {sec.items.map((item, i) => (
+                  <div key={i} className="rounded-xl border border-[#0d8a8a]/15 bg-white/70 px-4 py-3">
+                    <p className="font-semibold text-[#1a1410] text-xs mb-1">{item.label}</p>
+                    <p className="text-[#6b5a4a] text-xs leading-relaxed">{item.detail}</p>
+                  </div>
+                ))}
+              </div>
+            );
+            return (
+              <div className="space-y-3 text-sm text-[#6b5a4a] leading-relaxed">
+                {(sec.paragraphs ?? []).map((p, i) => <p key={i}>{p}</p>)}
+              </div>
+            );
+          };
+
           return (
-          <div className="space-y-12">
+          <div className="space-y-10">
             <div>
               <h2
                 className="font-bold text-2xl text-[#1a1410] mb-3"
@@ -607,195 +647,72 @@ export function JourneyTabs({
               <p className="text-[#6b5a4a] text-base leading-relaxed">{b.intro}</p>
             </div>
 
-            {/* Work */}
             <div className="space-y-5">
               <p className="text-[#0d8a8a] font-bold text-xs tracking-widest uppercase">Work</p>
               <p className="text-[#6b5a4a] text-sm leading-relaxed -mt-2">{b.workIntro}</p>
 
-              {b.workProjects.map(proj => {
-                const sections = [
-                  {
-                    id: `${proj.id}-need`,
-                    label: "The Need",
-                    content: (
-                      <div className="space-y-3 text-sm text-[#6b5a4a] leading-relaxed">
-                        <p>{proj.needP1}</p>
-                        <p>{proj.needP2}</p>
-                      </div>
-                    ),
-                  },
-                  {
-                    id: `${proj.id}-does`,
-                    label: "What It Does",
-                    content: (
-                      <ul className="space-y-2 text-sm text-[#6b5a4a]">
-                        {proj.whatItDoesBullets.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2.5">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#0d8a8a] shrink-0" />
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    ),
-                  },
-                  {
-                    id: `${proj.id}-impact`,
-                    label: "Business Impact",
-                    content: (
-                      <div className="grid sm:grid-cols-2 gap-3">
-                        {proj.businessImpactItems.map((item, i) => (
-                          <div key={i} className="rounded-xl border border-[#0d8a8a]/15 bg-white/70 px-4 py-3">
-                            <p className="font-semibold text-[#1a1410] text-xs mb-1">{item.label}</p>
-                            <p className="text-[#6b5a4a] text-xs leading-relaxed">{item.detail}</p>
-                          </div>
-                        ))}
-                      </div>
-                    ),
-                  },
-                  {
-                    id: `${proj.id}-docs`,
-                    label: "How It's Documented",
-                    content: (
-                      <div className="space-y-3 text-sm text-[#6b5a4a] leading-relaxed">
-                        <p>{proj.docsP1}</p>
-                        <p>{proj.docsP2}</p>
-                      </div>
-                    ),
-                  },
-                ];
-                return (
-                  <div
-                    key={proj.id}
-                    className="rounded-2xl border border-[#0d8a8a]/20 overflow-hidden"
-                    style={{ background: "linear-gradient(135deg, #f0fafa 0%, #ffffff 60%)" }}
-                  >
-                    <div className="px-6 pt-6 pb-5">
-                      <div className="flex items-start justify-between gap-4 mb-3">
-                        <div>
-                          <h3
-                            className="font-bold text-lg text-[#1a1410]"
-                            style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
-                          >
-                            {proj.title}
-                          </h3>
-                          <p className="text-[#0d8a8a] text-xs font-medium mt-0.5">{proj.subtitle}</p>
-                        </div>
-                        <span
-                          className="shrink-0 px-3 py-1 rounded-full text-xs font-medium border border-[#0d8a8a]/25 text-[#0d8a8a]"
-                          style={{ background: "rgba(13,138,138,0.07)" }}
+              {b.workProjects.map(proj => (
+                <div
+                  key={proj.id}
+                  className="rounded-2xl border border-[#0d8a8a]/20 overflow-hidden"
+                  style={{ background: "linear-gradient(135deg, #f0fafa 0%, #ffffff 60%)" }}
+                >
+                  <div className="px-6 pt-6 pb-5">
+                    <div className="flex items-start justify-between gap-4 mb-3">
+                      <div>
+                        <h3
+                          className="font-bold text-lg text-[#1a1410]"
+                          style={{ fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
                         >
-                          {proj.badge}
-                        </span>
+                          {proj.title}
+                        </h3>
+                        <p className="text-[#0d8a8a] text-xs font-medium mt-0.5">{proj.subtitle}</p>
                       </div>
-                      <p className="text-[#6b5a4a] text-sm leading-relaxed">{proj.overviewP1}</p>
-                      <p className="text-[#6b5a4a] text-sm leading-relaxed mt-2">{proj.overviewP2}</p>
+                      <span
+                        className="shrink-0 px-3 py-1 rounded-full text-xs font-medium border border-[#0d8a8a]/25 text-[#0d8a8a]"
+                        style={{ background: "rgba(13,138,138,0.07)" }}
+                      >
+                        {proj.badge}
+                      </span>
                     </div>
-                    <div className="h-px mx-6" style={{ background: "rgba(13,138,138,0.12)" }} />
-                    <div className="divide-y divide-[#0d8a8a]/10">
-                      {sections.map(({ id, label, content }) => (
-                        <div key={id}>
+                    {proj.overview.map((p, i) => (
+                      <p key={i} className={`text-[#6b5a4a] text-sm leading-relaxed${i > 0 ? " mt-2" : ""}`}>{p}</p>
+                    ))}
+                  </div>
+                  <div className="h-px mx-6" style={{ background: "rgba(13,138,138,0.12)" }} />
+                  <div className="divide-y divide-[#0d8a8a]/10">
+                    {proj.sections.map(sec => {
+                      const secId = `${proj.id}-${sec.id}`;
+                      return (
+                        <div key={secId}>
                           <button
-                            onClick={() => toggleSection(id)}
+                            onClick={() => toggleSection(secId)}
                             className="w-full flex items-center justify-between px-6 py-4 text-left transition-colors hover:bg-[#0d8a8a]/5"
                           >
-                            <span className="text-sm font-semibold text-[#1a1410]">{label}</span>
+                            <span className="text-sm font-semibold text-[#1a1410]">{sec.label}</span>
                             <span
                               className="text-[#0d8a8a] text-lg font-light leading-none transition-transform duration-200"
-                              style={{ transform: openSections.has(id) ? "rotate(45deg)" : "rotate(0deg)" }}
+                              style={{ transform: openSections.has(secId) ? "rotate(45deg)" : "rotate(0deg)" }}
                             >
                               +
                             </span>
                           </button>
-                          {openSections.has(id) && (
+                          {openSections.has(secId) && (
                             <motion.div
                               initial={{ opacity: 0, y: -6 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ duration: 0.2 }}
                               className="px-6 pb-5"
                             >
-                              {content}
+                              {renderSectionContent(sec)}
                             </motion.div>
                           )}
                         </div>
-                      ))}
-                    </div>
+                      );
+                    })}
                   </div>
-                );
-              })}
-            </div>
-
-            {/* Personal */}
-            <div className="space-y-5">
-              <p className="text-[#c4622d] font-bold text-xs tracking-widest uppercase">Personal</p>
-              <p className="text-[#6b5a4a] text-sm leading-relaxed -mt-2">{b.personalIntro}</p>
-              <div className="grid sm:grid-cols-2 gap-5">
-                {b.personalProjects.map((item) => {
-                  const imgs = (item as typeof item & { imageUrls?: string[] }).imageUrls ?? [];
-                  const idx = carouselIdx[item.id] ?? 0;
-                  const prev = () => setCarouselIdx(c => ({ ...c, [item.id]: (idx - 1 + imgs.length) % imgs.length }));
-                  const next = () => setCarouselIdx(c => ({ ...c, [item.id]: (idx + 1) % imgs.length }));
-                  return (
-                    <div
-                      key={item.id}
-                      className="rounded-2xl border border-[#e8ddd0] bg-white/60 overflow-hidden flex flex-col"
-                    >
-                      {imgs.length > 0 ? (
-                        <div className="relative w-full h-44 overflow-hidden" style={{ background: "#f5e8d0" }}>
-                          <img
-                            src={imgs[idx]}
-                            alt={`${item.title} screenshot ${idx + 1}`}
-                            className="w-full h-full object-cover cursor-zoom-in"
-                            onClick={() => setLightbox({ imgs, idx })}
-                          />
-                          {imgs.length > 1 && (
-                            <>
-                              <button
-                                onClick={prev}
-                                className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center text-xs transition-opacity hover:opacity-100 opacity-70"
-                                style={{ background: "rgba(26,20,16,0.55)", color: "#faf9f6" }}
-                              >
-                                ‹
-                              </button>
-                              <button
-                                onClick={next}
-                                className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center text-xs transition-opacity hover:opacity-100 opacity-70"
-                                style={{ background: "rgba(26,20,16,0.55)", color: "#faf9f6" }}
-                              >
-                                ›
-                              </button>
-                              <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5">
-                                {imgs.map((_, i) => (
-                                  <button
-                                    key={i}
-                                    onClick={() => setCarouselIdx(c => ({ ...c, [item.id]: i }))}
-                                    className="w-1.5 h-1.5 rounded-full transition-all"
-                                    style={{ background: i === idx ? "#faf9f6" : "rgba(250,249,246,0.45)" }}
-                                  />
-                                ))}
-                              </div>
-                            </>
-                          )}
-                        </div>
-                      ) : (
-                        <div
-                          className="w-full h-44 flex items-center justify-center"
-                          style={{ background: "linear-gradient(135deg, #f5e8d0 0%, #ede0cc 100%)" }}
-                        >
-                          <span className="text-[#c4622d]/30 text-xs font-medium tracking-widest uppercase">Screenshot coming soon</span>
-                        </div>
-                      )}
-                      <div className="px-5 py-4 flex flex-col gap-2">
-                        <p className="font-semibold text-[#1a1410] text-sm">{item.title}</p>
-                        <div className="space-y-2">
-                          {item.description.split("\n\n").map((para, i) => (
-                            <p key={i} className="text-[#6b5a4a] text-xs leading-relaxed">{para}</p>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
           );

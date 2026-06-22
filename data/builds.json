@@ -1,75 +1,178 @@
 {
-  "intro": "This is where I get to show, not just tell.\n\nSome of what I have built lives at work, behind the scenes of a research project or an ops workflow, solving a real problem for a real team. Some of it lives in my own time, born out of curiosity and exploration, a problem I wanted to solve, or just the satisfaction of figuring something out.",
-  "workIntro": "Tools and agents I've built to make operations smoother, faster, and more consistent. These live inside real workflows and solve the kind of problems that often become workarounds instead of getting fixed.",
-  "personalIntro": "On my own time, I build things that help make my busy life easier and more organized. ",
+  "intro": "This is where I get to show, not just tell. What you see here are real problems I stepped into and solved — each one part of building something more durable for the team and the business.",
+  "workIntro": "Tools, systems, and frameworks I have built at ContextualY to solve real operational problems. These are not hypothetical. Each one came out of a gap I identified, a process I designed, and a change I saw through to completion.",
   "workProjects": [
     {
       "id": "research-pm-agent",
       "title": "Research PM Agent",
-      "subtitle": "Recruiting QA \u00b7 ContextualY, inc.",
+      "subtitle": "Recruiting QA · ContextualY, inc.",
       "badge": "Internal Tool",
-      "overviewP1": "As Head of Business Operations at ContextualY, one of my recurring challenges was that every recruiting vendor delivered respondent profiles in their own format: different fields, different terminology, different levels of detail. It made comparison slower, review messier, and client-facing documentation inconsistent. So I built something to fix it.",
-      "overviewP2": "The Recruiting QA agent acts as a PM-grade quality layer for qualitative research recruiting. It standardizes profile grids, evaluates incoming respondents against screener criteria, flags risks, and produces clean, blind-safe feedback, all without exposing confidential client information or screening strategy.",
-      "needP1": "Qualitative recruiting requires accuracy, speed, and discretion. When multiple vendors are involved, the process can become fragmented, each using their own grid, formatting, and level of detail. This makes it harder to compare respondents consistently, catch qualification gaps, and keep client-facing review clean.",
-      "needP2": "The key needs were clear: standardize inputs across vendors, create a consistent format for client review, improve recruiting QA without slowing timelines, reduce manual effort for the project team, and protect sensitive information (including client identity, qualification logic, and respondent PII) while still giving recruiters actionable, useful feedback.",
-      "whatItDoesBullets": [
-        "Creates standardized respondent profile grids from screeners and stakeholder requirements",
-        "Translates project criteria into structured recruiter-facing fields",
-        "Reviews incoming profiles for completeness, consistency, and fit",
-        "Flags missing, vague, conflicting, or potentially risky responses",
-        "Identifies possible gaming signals or overly polished answers",
-        "Recommends follow-up questions for borderline or unclear candidates",
-        "Produces blind-safe feedback that can be shared with recruiters",
-        "Tracks when respondents are approved, scheduled, and completed",
-        "Drafts daily client-ready status updates based on email activity"
+      "overview": [
+        "As Head of Business Operations at ContextualY, one of my recurring challenges was that every recruiting vendor delivered respondent profiles in their own format: different fields, different terminology, different levels of detail. It made comparison slower, review messier, and client-facing documentation inconsistent. So I built something to fix it.",
+        "The Recruiting QA agent acts as a PM-grade quality layer for qualitative research recruiting. It standardizes profile grids, evaluates incoming respondents against screener criteria, flags risks, and produces clean, blind-safe feedback, all without exposing confidential client information or screening strategy."
       ],
-      "businessImpactItems": [
+      "sections": [
         {
-          "label": "Faster profile review",
-          "detail": "Reduces time spent manually reformatting and evaluating vendor submissions."
+          "id": "need",
+          "label": "The Need",
+          "paragraphs": [
+            "Qualitative recruiting requires accuracy, speed, and discretion. When multiple vendors are involved, the process can become fragmented, each using their own grid, formatting, and level of detail. This makes it harder to compare respondents consistently, catch qualification gaps, and keep client-facing review clean.",
+            "The key needs were clear: standardize inputs across vendors, create a consistent format for client review, improve recruiting QA without slowing timelines, reduce manual effort for the project team, and protect sensitive information (including client identity, qualification logic, and respondent PII) while still giving recruiters actionable, useful feedback."
+          ]
         },
         {
-          "label": "Improved consistency",
-          "detail": "Ensures all vendors provide respondent information in a standardized format."
+          "id": "does",
+          "label": "What It Does",
+          "bullets": [
+            "Creates standardized respondent profile grids from screeners and stakeholder requirements",
+            "Translates project criteria into structured recruiter-facing fields",
+            "Reviews incoming profiles for completeness, consistency, and fit",
+            "Flags missing, vague, conflicting, or potentially risky responses",
+            "Identifies possible gaming signals or overly polished answers",
+            "Recommends follow-up questions for borderline or unclear candidates",
+            "Produces blind-safe feedback that can be shared with recruiters",
+            "Tracks when respondents are approved, scheduled, and completed",
+            "Drafts daily client-ready status updates based on email activity"
+          ]
         },
         {
-          "label": "Stronger recruiting quality",
-          "detail": "Helps identify incomplete, weak, or potentially misaligned candidates earlier."
+          "id": "impact",
+          "label": "Business Impact",
+          "items": [
+            { "label": "Faster profile review", "detail": "Reduces time spent manually reformatting and evaluating vendor submissions." },
+            { "label": "Improved consistency", "detail": "Ensures all vendors provide respondent information in a standardized format." },
+            { "label": "Stronger recruiting quality", "detail": "Helps identify incomplete, weak, or potentially misaligned candidates earlier." },
+            { "label": "Cleaner client deliverables", "detail": "Creates a more polished and consistent profile review experience." },
+            { "label": "Reduced operational risk", "detail": "Prevents disclosure of client identity, sensitive qualification logic, and respondent PII." },
+            { "label": "Scalable process foundation", "detail": "A repeatable workflow that grows with the company." }
+          ]
         },
         {
-          "label": "Cleaner client deliverables",
-          "detail": "Creates a more polished and consistent profile review experience."
-        },
-        {
-          "label": "Reduced operational risk",
-          "detail": "Prevents disclosure of client identity, sensitive qualification logic, and respondent PII."
-        },
-        {
-          "label": "Scalable process foundation",
-          "detail": "A repeatable workflow that grows with the company."
+          "id": "docs",
+          "label": "How It's Documented",
+          "paragraphs": [
+            "The agent is supported by documentation that makes it usable by anyone on the project team, not just me. It covers the agent's purpose and use case, the inputs required before it can produce outputs (kick-off decks, screeners, must-have criteria, exclusion logic), and a step-by-step standard workflow from project initialization through client-ready status updates.",
+            "Output types are clearly defined: profile grids, QA reviews, risk flags, follow-up questions, blind-safe recruiter feedback, client-facing summaries, and daily status drafts. Privacy guardrails are built into the documentation, and the review process is explicit: the agent supports judgment, it doesn't replace it. Final decisions stay with the project lead."
+          ]
         }
-      ],
-      "docsP1": "The agent is supported by documentation that makes it usable by anyone on the project team, not just me. It covers the agent's purpose and use case, the inputs required before it can produce outputs (kick-off decks, screeners, must-have criteria, exclusion logic), and a step-by-step standard workflow from project initialization through client-ready status updates.",
-      "docsP2": "Output types are clearly defined: profile grids, QA reviews, risk flags, follow-up questions, blind-safe recruiter feedback, client-facing summaries, and daily status drafts. Privacy guardrails are built into the documentation, and the review process is explicit: the agent supports judgment, it doesn't replace it. Final decisions stay with the project lead."
-    }
-  ],
-  "personalProjects": [
-    {
-      "id": "tres-hearts-baker",
-      "title": "Tres Hearts Baker Recipe Box",
-      "description": "Baking is a passion of mine is one of the ways I show up for the people I love. \n\nTres Hearts Baker started as a social media brand last summer in 2025. I created it to inspire beginner bakers, share helpful tips, and document the things I make.\n\nMost of my recipes live in a binder, so I built a digital recipe box using Claude Code to keep everything in one place: recipes I\u2019m testing, recipes I\u2019ve perfected, and the ones I keep coming back to. The site includes an AI recipe helper, batch import, and an admin portal that allows me to easily update and manage my recipes.",
-      "imageUrls": [
-        "/tres-hearts-home.png",
-        "/tres-hearts-library.png",
-        "/tres-hearts-upload.png",
-        "/tres-hearts-lab.png"
       ]
     },
     {
-      "id": "placeholder-1",
-      "title": "More in the works",
-      "description": "A few other things in progress. Check back soon.",
-      "imageUrls": []
+      "id": "growth-framework",
+      "title": "First Growth Framework",
+      "subtitle": "Strategic Framework · ContextualY, inc.",
+      "badge": "Strategic Framework",
+      "overview": [
+        "The company's pipeline had slowed and there was no structured approach to finding new clients. I stepped in and built ContextualY's first growth framework from scratch, turning a period of uncertainty into a clear path forward."
+      ],
+      "sections": [
+        {
+          "id": "problem",
+          "label": "The Problem",
+          "paragraphs": [
+            "The company's pipeline had slowed. The founding network that had driven early business was no longer generating new work at the pace the business needed, and there was no structured approach to finding new clients. The company had been built on relationships, which worked well in the beginning, but contacts began to retire or were affected by layoffs or budget reductions. At the same time, the team was navigating a significant internal transition. The company needed a path forward, and quickly."
+          ]
+        },
+        {
+          "id": "uncovered",
+          "label": "What I Uncovered",
+          "paragraphs": [
+            "The company was looking inward. The work was strong and the client results were solid, but there was no clear picture of where the company stood in the market, what opportunities were being missed, or what a realistic growth strategy could look like. The business was in reactive mode, waiting for the next referral rather than building toward the next client."
+          ]
+        },
+        {
+          "id": "did",
+          "label": "What I Did",
+          "paragraphs": [
+            "I stepped in and built ContextualY's first structured growth framework from scratch, starting with a SWOT analysis that surfaced three strategic priorities: visibility, proof, and business development. I identified whitespace in the market for qualitative-led strategic research in enterprise technology. I translated the analysis into materials the remaining leadership could act on immediately, including a LinkedIn outreach strategy, a competitor gap analysis, a prioritization framework, execution trackers, and website refinement guidance. The output was a focused 12-week execution plan with clear next steps and ownership."
+          ]
+        },
+        {
+          "id": "results",
+          "label": "The Results",
+          "paragraphs": [
+            "The company had direction when it needed it most. The framework gave the remaining team a shared path forward and shifted the business from reactive to intentional in how it approaches growth. It also surfaced a market positioning angle that had not been articulated before, giving the company a clearer story to tell about what makes it different. The work that came out of that framework created momentum where there had been uncertainty, and the pipeline has since started to recover."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "website-repositioning",
+      "title": "Website Repositioning — SEO & GEO Strategy",
+      "subtitle": "Internal Project · ContextualY, inc.",
+      "badge": "Internal Project",
+      "overview": [
+        "With the pipeline already under pressure, I ran a Google search on the company. ContextualY was not coming up at all. I took ownership of a full website repositioning effort, rebuilding the site's structure and content around how clients actually search and what they need to see."
+      ],
+      "sections": [
+        {
+          "id": "problem",
+          "label": "The Problem",
+          "paragraphs": [
+            "With the pipeline already under pressure, I ran a Google search on the company. ContextualY was not coming up at all. The website had been created quickly at launch, on the advice that the company just needed some online presence. There had been no real thought given to structure, content, or how a potential client would actually find or read it. Traffic was minimal and the site was not doing any work for the business."
+          ]
+        },
+        {
+          "id": "uncovered",
+          "label": "What I Uncovered",
+          "paragraphs": [
+            "Knowing we needed expert guidance, we connected with an SEO specialist to understand what it would take to fix it. The specialist pointed out that the website had been built from the inside out. The content reflected how the company saw itself, not how a prospective client would search for it or what they would need to see to take the next step. We also learned about GEO, a newer approach to optimizing for AI-generated search results. A full SEO and GEO strategy was outside the budget, but the direction was clear: the site needed to be restructured around the client, not the company."
+          ]
+        },
+        {
+          "id": "did",
+          "label": "What I Did",
+          "paragraphs": [
+            "I took ownership of the process from start to finish. I mapped out every page and piece of copy that existed on the site, then used AI to develop a content and page structure framework based on what a company like ours actually needs to compete and be found. The framework shifted the focus from internal description to client-relevant content. I coordinated the changes strategically, applying SEO and GEO principles to the structure, content, and positioning of each page."
+          ]
+        },
+        {
+          "id": "results",
+          "label": "The Results",
+          "paragraphs": [
+            "The company is now coming up in search results. The site reads like a business speaking to its market rather than a placeholder explaining itself. It is still a lean, in-house build, but it is doing its job. We continue to refine it as we learn more about what is working."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hubspot-crm",
+      "title": "HubSpot CRM — Sales Pipeline & Outreach Tracking",
+      "subtitle": "Internal System · ContextualY, inc.",
+      "badge": "Internal System",
+      "overview": [
+        "The company's sales outreach had no formal tracking system. I designed and implemented a centralized CRM in HubSpot, giving the team pipeline visibility and consistent follow-up for the first time."
+      ],
+      "sections": [
+        {
+          "id": "problem",
+          "label": "The Problem",
+          "paragraphs": [
+            "The company's sales outreach had no formal tracking system. Conversations were happening, follow-up notes were scattered, and potential opportunities had no central home. There was no way to know what was active, what had gone quiet, or what was close to converting."
+          ]
+        },
+        {
+          "id": "uncovered",
+          "label": "What I Uncovered",
+          "paragraphs": [
+            "The issue was not effort. What was missing was a structure to hold it. Without a system, follow-up depended on memory, which meant things slipped through not because anyone was careless, but because nothing was designed to catch them. I had already started logging opportunities in a spreadsheet on my end, which confirmed the gap and made clear a more durable solution was needed."
+          ]
+        },
+        {
+          "id": "did",
+          "label": "What I Did",
+          "paragraphs": [
+            "I designed and implemented a centralized CRM in HubSpot, building out contact records, pipeline stages, outreach sequences, and structured follow-up workflows. I set up data relationships so contacts, companies, deals, and communications all connected in one place. I also built a simple process for keeping it current so the system would stay useful as the company's outreach grew."
+          ]
+        },
+        {
+          "id": "results",
+          "label": "The Results",
+          "paragraphs": [
+            "The company had pipeline visibility for the first time. Follow-up became consistent and trackable. Missed opportunities decreased, and the team had a foundation for understanding which outreach efforts were actually converting."
+          ]
+        }
+      ]
     }
   ]
 }

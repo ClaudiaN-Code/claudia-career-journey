@@ -628,32 +628,14 @@ function SiteTextSection() {
 }
 
 // ── BUILDS & PROJECTS SECTION ────────────────────────────────────────────────
-type ImpactItem = { label: string; detail: string };
-type PersonalProject = { id: string; title: string; description: string; imageUrls: string[] };
-type WorkProject = typeof buildsRaw.workProjects[number];
-type BuildsData = Omit<typeof buildsRaw, "workProjects" | "personalProjects"> & {
-  workProjects: WorkProject[];
-  personalProjects: PersonalProject[];
-};
+type WorkSection = { id: string; label: string; paragraphs?: string[]; bullets?: string[]; items?: { label: string; detail: string }[] };
+type WorkProject = { id: string; title: string; subtitle: string; badge: string; overview: string[]; sections: WorkSection[] };
+type BuildsData = { intro: string; workIntro: string; workProjects: WorkProject[] };
 
 function BuildsSection() {
-  const [builds, setBuilds] = useState<BuildsData>(() => {
-    const raw = buildsRaw as BuildsData;
-    return {
-      ...raw,
-      personalProjects: raw.personalProjects.map(p => {
-        const legacy = p as PersonalProject & { imageUrl?: string | null };
-        return { ...p, imageUrls: p.imageUrls?.length ? p.imageUrls : (legacy.imageUrl ? [legacy.imageUrl] : []) };
-      }),
-    };
-  });
+  const [builds, setBuilds] = useState<BuildsData>(buildsRaw as unknown as BuildsData);
   const [status, setStatus] = useState<SaveStatus>("idle");
-  const [editingPersonalIdx, setEditingPersonalIdx] = useState<number | null>(null);
-  const [showNewPersonal, setShowNewPersonal] = useState(false);
-  const [editingWorkIdx, setEditingWorkIdx] = useState<number | null>(null);
-  const blankPersonal: PersonalProject = { id: Date.now().toString(), title: "", description: "", imageUrls: [] };
-  const [newImageUrl, setNewImageUrl] = useState("");
-  const [personalDraft, setPersonalDraft] = useState<PersonalProject>(blankPersonal);
+  const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
 
   async function save() {
     setStatus("saving");
@@ -662,221 +644,102 @@ function BuildsSection() {
     if (!err) setTimeout(() => setStatus("idle"), 4000);
   }
 
-  function updateWorkProj(idx: number, updated: WorkProject) {
-    const next = [...builds.workProjects] as WorkProject[];
+  function updateProj(idx: number, updated: WorkProject) {
+    const next = [...builds.workProjects];
     next[idx] = updated;
     setBuilds({ ...builds, workProjects: next });
   }
 
-  function commitPersonal() {
-    const next = [...builds.personalProjects] as PersonalProject[];
-    if (showNewPersonal) {
-      next.push({ ...personalDraft, id: Date.now().toString() });
-    } else if (editingPersonalIdx !== null) {
-      next[editingPersonalIdx] = personalDraft;
-    }
-    setBuilds({ ...builds, personalProjects: next });
-    setEditingPersonalIdx(null);
-    setShowNewPersonal(false);
+  function updateSection(projIdx: number, secIdx: number, updated: WorkSection) {
+    const proj = builds.workProjects[projIdx];
+    const sections = [...proj.sections];
+    sections[secIdx] = updated;
+    updateProj(projIdx, { ...proj, sections });
   }
-
-  function removePersonal(idx: number) {
-    if (!confirm("Remove this project card?")) return;
-    setBuilds({ ...builds, personalProjects: builds.personalProjects.filter((_, i) => i !== idx) });
-  }
-
-  const proj = builds.workProjects[0] as WorkProject;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-8">
       <h2 className="text-lg font-bold text-[#faf9f6]">Builds &amp; Projects</h2>
 
-      {/* Intro texts */}
       <div className="space-y-4">
         <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#0d8a8a" }}>Section Intros</p>
-        <Field label="Page intro (top of tab)">
-          <Textarea rows={3} value={builds.intro} onChange={e => setBuilds({ ...builds, intro: e.target.value })} />
-        </Field>
-        <Field label="Work section intro">
-          <Textarea rows={2} value={builds.workIntro} onChange={e => setBuilds({ ...builds, workIntro: e.target.value })} />
-        </Field>
-        <Field label="Personal section intro">
-          <Textarea rows={2} value={builds.personalIntro} onChange={e => setBuilds({ ...builds, personalIntro: e.target.value })} />
-        </Field>
+        <Field label="Page intro"><Textarea rows={3} value={builds.intro} onChange={e => setBuilds({ ...builds, intro: e.target.value })} /></Field>
+        <Field label="Work section intro"><Textarea rows={2} value={builds.workIntro} onChange={e => setBuilds({ ...builds, workIntro: e.target.value })} /></Field>
       </div>
 
-      {/* Work project: Research PM Agent */}
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#0d8a8a" }}>Work Project: {proj.title}</p>
-          <button
-            onClick={() => setEditingWorkIdx(editingWorkIdx === 0 ? null : 0)}
-            className="text-xs px-3 py-1 rounded-lg"
-            style={{ color: "#c4622d", border: "1px solid #c4622d33" }}
-          >
-            {editingWorkIdx === 0 ? "Collapse" : "Edit"}
-          </button>
-        </div>
-
-        {editingWorkIdx === 0 && (
-          <div className="space-y-4 rounded-xl p-5" style={{ background: "#2a2018", border: "1px solid #3a2e22" }}>
-            <div className="grid grid-cols-2 gap-3">
-              <Field label="Title"><Input value={proj.title} onChange={e => updateWorkProj(0, { ...proj, title: e.target.value })} /></Field>
-              <Field label="Badge (e.g. Internal Tool)"><Input value={proj.badge} onChange={e => updateWorkProj(0, { ...proj, badge: e.target.value })} /></Field>
-              <Field label="Subtitle (role · company)" ><Input value={proj.subtitle} onChange={e => updateWorkProj(0, { ...proj, subtitle: e.target.value })} /></Field>
-            </div>
-
-            <Field label="Overview paragraph 1">
-              <Textarea rows={3} value={proj.overviewP1} onChange={e => updateWorkProj(0, { ...proj, overviewP1: e.target.value })} />
-            </Field>
-            <Field label="Overview paragraph 2">
-              <Textarea rows={3} value={proj.overviewP2} onChange={e => updateWorkProj(0, { ...proj, overviewP2: e.target.value })} />
-            </Field>
-
-            <div className="h-px" style={{ background: "#3a2e22" }} />
-            <p className="text-xs text-[#7a6a5a] font-medium uppercase tracking-wide">The Need</p>
-            <Field label="Paragraph 1">
-              <Textarea rows={3} value={proj.needP1} onChange={e => updateWorkProj(0, { ...proj, needP1: e.target.value })} />
-            </Field>
-            <Field label="Paragraph 2">
-              <Textarea rows={3} value={proj.needP2} onChange={e => updateWorkProj(0, { ...proj, needP2: e.target.value })} />
-            </Field>
-
-            <div className="h-px" style={{ background: "#3a2e22" }} />
-            <p className="text-xs text-[#7a6a5a] font-medium uppercase tracking-wide">What It Does (one bullet per line)</p>
-            <Textarea
-              rows={10}
-              value={proj.whatItDoesBullets.join("\n")}
-              onChange={e => updateWorkProj(0, { ...proj, whatItDoesBullets: e.target.value.split("\n") })}
-            />
-
-            <div className="h-px" style={{ background: "#3a2e22" }} />
-            <p className="text-xs text-[#7a6a5a] font-medium uppercase tracking-wide">Business Impact Items</p>
-            {proj.businessImpactItems.map((item, i) => (
-              <div key={i} className="grid grid-cols-2 gap-2 items-start">
-                <Field label={`Item ${i + 1} label`}>
-                  <Input
-                    value={item.label}
-                    onChange={e => {
-                      const next = [...proj.businessImpactItems] as ImpactItem[];
-                      next[i] = { ...next[i], label: e.target.value };
-                      updateWorkProj(0, { ...proj, businessImpactItems: next });
-                    }}
-                  />
-                </Field>
-                <Field label="Detail">
-                  <Input
-                    value={item.detail}
-                    onChange={e => {
-                      const next = [...proj.businessImpactItems] as ImpactItem[];
-                      next[i] = { ...next[i], detail: e.target.value };
-                      updateWorkProj(0, { ...proj, businessImpactItems: next });
-                    }}
-                  />
-                </Field>
-              </div>
-            ))}
-
-            <div className="h-px" style={{ background: "#3a2e22" }} />
-            <p className="text-xs text-[#7a6a5a] font-medium uppercase tracking-wide">How It&apos;s Documented</p>
-            <Field label="Paragraph 1">
-              <Textarea rows={3} value={proj.docsP1} onChange={e => updateWorkProj(0, { ...proj, docsP1: e.target.value })} />
-            </Field>
-            <Field label="Paragraph 2">
-              <Textarea rows={3} value={proj.docsP2} onChange={e => updateWorkProj(0, { ...proj, docsP2: e.target.value })} />
-            </Field>
-          </div>
-        )}
-      </div>
-
-      {/* Personal projects */}
-      <div className="space-y-4">
-        <div className="flex items-center justify-between">
-          <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#c4622d" }}>Personal Projects</p>
-          {!showNewPersonal && editingPersonalIdx === null && (
+      {builds.workProjects.map((proj, pi) => (
+        <div key={proj.id} className="space-y-3">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#0d8a8a" }}>{proj.title}</p>
             <button
-              onClick={() => { setPersonalDraft(blankPersonal); setShowNewPersonal(true); }}
-              className="px-3 py-1.5 rounded-lg text-xs font-semibold text-white"
-              style={{ background: "#c4622d" }}
+              onClick={() => setExpandedIdx(expandedIdx === pi ? null : pi)}
+              className="text-xs px-3 py-1 rounded-lg"
+              style={{ color: "#c4622d", border: "1px solid #c4622d33" }}
             >
-              + Add project
+              {expandedIdx === pi ? "Collapse" : "Edit"}
             </button>
+          </div>
+
+          {expandedIdx === pi && (
+            <div className="rounded-xl p-5 space-y-4" style={{ background: "#2a2018", border: "1px solid #3a2e22" }}>
+              <div className="grid grid-cols-2 gap-3">
+                <Field label="Title"><Input value={proj.title} onChange={e => updateProj(pi, { ...proj, title: e.target.value })} /></Field>
+                <Field label="Badge"><Input value={proj.badge} onChange={e => updateProj(pi, { ...proj, badge: e.target.value })} /></Field>
+                <Field label="Subtitle"><Input value={proj.subtitle} onChange={e => updateProj(pi, { ...proj, subtitle: e.target.value })} /></Field>
+              </div>
+
+              <div className="h-px" style={{ background: "#3a2e22" }} />
+              <p className="text-xs text-[#7a6a5a] font-medium uppercase tracking-wide">Overview (one paragraph per box)</p>
+              {proj.overview.map((p, i) => (
+                <Field key={i} label={`Paragraph ${i + 1}`}>
+                  <Textarea rows={3} value={p} onChange={e => {
+                    const ov = [...proj.overview]; ov[i] = e.target.value;
+                    updateProj(pi, { ...proj, overview: ov });
+                  }} />
+                </Field>
+              ))}
+
+              {proj.sections.map((sec, si) => (
+                <div key={sec.id}>
+                  <div className="h-px mb-4" style={{ background: "#3a2e22" }} />
+                  <p className="text-xs text-[#7a6a5a] font-medium uppercase tracking-wide mb-3">{sec.label}</p>
+                  {sec.paragraphs && sec.paragraphs.map((p, i) => (
+                    <Field key={i} label={`Paragraph ${i + 1}`}>
+                      <Textarea rows={4} value={p} onChange={e => {
+                        const ps = [...(sec.paragraphs ?? [])]; ps[i] = e.target.value;
+                        updateSection(pi, si, { ...sec, paragraphs: ps });
+                      }} />
+                    </Field>
+                  ))}
+                  {sec.bullets && (
+                    <Field label="Bullets (one per line)">
+                      <Textarea rows={8} value={sec.bullets.join("\n")} onChange={e =>
+                        updateSection(pi, si, { ...sec, bullets: e.target.value.split("\n") })
+                      } />
+                    </Field>
+                  )}
+                  {sec.items && sec.items.map((item, i) => (
+                    <div key={i} className="grid grid-cols-2 gap-2 mb-2">
+                      <Field label={`Item ${i + 1} label`}>
+                        <Input value={item.label} onChange={e => {
+                          const its = [...(sec.items ?? [])]; its[i] = { ...its[i], label: e.target.value };
+                          updateSection(pi, si, { ...sec, items: its });
+                        }} />
+                      </Field>
+                      <Field label="Detail">
+                        <Input value={item.detail} onChange={e => {
+                          const its = [...(sec.items ?? [])]; its[i] = { ...its[i], detail: e.target.value };
+                          updateSection(pi, si, { ...sec, items: its });
+                        }} />
+                      </Field>
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           )}
         </div>
-
-        {(showNewPersonal || editingPersonalIdx !== null) && (
-          <div className="rounded-xl p-5 space-y-4" style={{ background: "#2a2018", border: "1px solid #3a2e22" }}>
-            <Field label="Title"><Input value={personalDraft.title} onChange={e => setPersonalDraft({ ...personalDraft, title: e.target.value })} /></Field>
-            <Field label="Description"><Textarea rows={2} value={personalDraft.description} onChange={e => setPersonalDraft({ ...personalDraft, description: e.target.value })} /></Field>
-            <Field label="Screenshots (add one URL at a time — supports multiple)">
-              <div className="space-y-2">
-                {personalDraft.imageUrls.map((url, i) => (
-                  <div key={i} className="flex gap-2 items-center">
-                    <Input
-                      value={url}
-                      onChange={e => {
-                        const next = [...personalDraft.imageUrls];
-                        next[i] = e.target.value;
-                        setPersonalDraft({ ...personalDraft, imageUrls: next });
-                      }}
-                      className="flex-1 text-xs"
-                      placeholder="https://..."
-                    />
-                    <button
-                      onClick={() => setPersonalDraft({ ...personalDraft, imageUrls: personalDraft.imageUrls.filter((_, j) => j !== i) })}
-                      className="text-red-400 text-lg leading-none px-1 hover:text-red-300"
-                    >&times;</button>
-                  </div>
-                ))}
-                <div className="flex gap-2">
-                  <Input
-                    value={newImageUrl}
-                    onChange={e => setNewImageUrl(e.target.value)}
-                    onKeyDown={e => {
-                      if (e.key === "Enter" && newImageUrl.trim()) {
-                        setPersonalDraft({ ...personalDraft, imageUrls: [...personalDraft.imageUrls, newImageUrl.trim()] });
-                        setNewImageUrl("");
-                      }
-                    }}
-                    placeholder="Paste image URL and press Enter or Add"
-                    className="flex-1 text-xs"
-                  />
-                  <button
-                    onClick={() => {
-                      if (!newImageUrl.trim()) return;
-                      setPersonalDraft({ ...personalDraft, imageUrls: [...personalDraft.imageUrls, newImageUrl.trim()] });
-                      setNewImageUrl("");
-                    }}
-                    className="px-3 py-2 rounded-lg text-xs font-semibold text-white shrink-0"
-                    style={{ background: "#c4622d" }}
-                  >Add</button>
-                </div>
-              </div>
-            </Field>
-            <div className="flex gap-2">
-              <button onClick={commitPersonal} className="px-4 py-2 rounded-lg text-xs font-semibold text-white" style={{ background: "#c4622d" }}>{showNewPersonal ? "Add" : "Update"}</button>
-              <button onClick={() => { setEditingPersonalIdx(null); setShowNewPersonal(false); }} className="px-4 py-2 rounded-lg text-xs font-semibold text-[#a09080]" style={{ background: "#1a1410", border: "1px solid #3a2e22" }}>Cancel</button>
-            </div>
-          </div>
-        )}
-
-        {!showNewPersonal && editingPersonalIdx === null && (
-          <div className="space-y-2">
-            {builds.personalProjects.map((proj, i) => (
-              <div key={proj.id} className="flex items-start justify-between px-4 py-3 rounded-xl gap-4" style={{ background: "#2a2018", border: "1px solid #3a2e22" }}>
-                <div className="min-w-0">
-                  <p className="text-sm font-semibold text-[#faf9f6]">{proj.title}</p>
-                  <p className="text-xs text-[#a09080] mt-0.5">{proj.description}</p>
-                </div>
-                <div className="flex gap-2 shrink-0">
-                  <button onClick={() => { setPersonalDraft({ ...proj }); setEditingPersonalIdx(i); }} className="px-3 py-1 rounded-lg text-xs text-[#c4622d]" style={{ border: "1px solid #c4622d33" }}>Edit</button>
-                  <button onClick={() => removePersonal(i)} className="px-3 py-1 rounded-lg text-xs text-red-400" style={{ border: "1px solid #ff444433" }}>Remove</button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
+      ))}
 
       <div className="flex items-center gap-4">
         <SaveBtn status={status} onClick={save} />
