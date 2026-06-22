@@ -62,7 +62,7 @@ function Textarea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
 }
 
 function SaveBtn({ status, onClick }: { status: SaveStatus; onClick: () => void }) {
-  const label = status === "saving" ? "Saving…" : status === "saved" ? "Saved ✓" : status === "error" ? "Error — retry" : "Save changes";
+  const label = status === "saving" ? "Saving…" : status === "saved" ? "Saved ✓" : status === "error" ? "Error, try again" : "Save changes";
   const bg = status === "saved" ? "#2a7a2a" : status === "error" ? "#8a2222" : "#c4622d";
   return (
     <button
@@ -107,7 +107,7 @@ function ProfileSection({ resume, setResume }: { resume: typeof resumeRaw; setRe
       <Field label="Tagline (short description in hero)">
         <Textarea rows={3} value={resume.tagline ?? ""} onChange={e => setResume({ ...resume, tagline: e.target.value })} />
       </Field>
-      <Field label="About summary (full text — use blank line between paragraphs)">
+      <Field label="About summary (full text, use blank line between paragraphs)">
         <Textarea rows={14} value={resume.summary} onChange={e => setResume({ ...resume, summary: e.target.value })} />
       </Field>
       <div className="flex items-center gap-4">
@@ -807,7 +807,7 @@ function ResumePdfSection({ resume, setResume }: { resume: typeof resumeRaw; set
             style={{ background: hasResume ? "#2a7a2a" : "#7a6a5a" }}
           />
           <span className="text-sm text-[#faf9f6]">
-            {hasResume ? "Resume is published — download button is visible" : "No resume published yet"}
+            {hasResume ? "Resume is published · download button is visible" : "No resume published yet"}
           </span>
         </div>
 

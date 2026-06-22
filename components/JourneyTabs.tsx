@@ -277,7 +277,7 @@ export function JourneyTabs({
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {certifications.map((cert, i) => {
-                        const [certTitle, meta] = cert.split(" — ");
+                        const [certTitle, meta] = cert.split(" · ");
                         return (
                           <div
                             key={i}
