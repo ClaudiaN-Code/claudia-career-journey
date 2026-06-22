@@ -538,6 +538,14 @@ export function JourneyTabs({
                       <p className="text-[#6b5a4a]/60 text-xs mt-0.5">
                         {rec.title}{rec.company ? ` · ${rec.company}` : ""}
                       </p>
+                      <a
+                        href="https://www.linkedin.com/in/claudianasraty/details/recommendations/?detailScreenTabIndex=0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block mt-2 text-[10px] text-[#c4622d]/60 hover:text-[#c4622d] transition-colors"
+                      >
+                        View full recommendation on LinkedIn ↗
+                      </a>
                     </div>
                   </motion.div>
                 </motion.div>
