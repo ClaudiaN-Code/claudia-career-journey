@@ -320,7 +320,7 @@ function ExperienceSection({ resume, setResume }: { resume: typeof resumeRaw; se
 
 // ── RECOMMENDATIONS SECTION ───────────────────────────────────────────────────
 function RecommendationsSection() {
-  const [recs, setRecs] = useState<Rec[]>(recsRaw as Rec[]);
+  const [recs, setRecs] = useState<Rec[]>(Object.values(recsRaw) as Rec[]);
   const [status, setStatus] = useState<SaveStatus>("idle");
   const [editingIdx, setEditingIdx] = useState<number | null>(null);
   const [showNew, setShowNew] = useState(false);

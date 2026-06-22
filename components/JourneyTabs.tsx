@@ -511,7 +511,7 @@ export function JourneyTabs({
               {contentData.recommendations.intro}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {recommendationsData.map((rec, i) => (
+              {(Object.values(recommendationsData) as {name:string;title:string;company:string;relationship:string;quote:string}[]).map((rec, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, scale: 0.85, y: 24 }}

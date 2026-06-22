@@ -9,7 +9,7 @@ interface Recommendation {
 }
 
 export function Recommendations() {
-  const recs = recommendationsData as Recommendation[];
+  const recs = Object.values(recommendationsData) as Recommendation[];
 
   return (
     <section className="py-20 px-4" style={{ background: "#1a1410" }}>
