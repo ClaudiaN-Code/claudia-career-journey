@@ -10,7 +10,7 @@ import resumeData from "@/data/resume.json";
 import buildsData from "@/data/builds.json";
 import contentData from "@/data/content.json";
 
-const TABS = ["About", "Professional History", "Skills & Tools", "Clients", "Builds & Projects", "Recommendations", "Writing"] as const;
+const TABS = ["About", "Professional History", "Builds & Projects", "Skills & Tools", "Clients", "Recommendations", "Writing"] as const;
 type Tab = (typeof TABS)[number];
 
 interface AdditionalRole {
