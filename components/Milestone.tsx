@@ -80,6 +80,26 @@ export function Milestone({
   const isEarly = emphasis === "early";
   const isFamily = company.toLowerCase().includes("family") || company.toLowerCase().includes("pause");
 
+  function renderClients(clientStr: string) {
+    const names = clientStr.replace(/^Clients:\s*/i, "").split(",").map(s => s.trim()).filter(Boolean);
+    return (
+      <div className="mt-2 mb-2">
+        <p className="text-[#0d8a8a] font-bold text-xs tracking-widest uppercase mb-1.5">Clients</p>
+        <div className="flex flex-wrap gap-1.5">
+          {names.map((name, i) => (
+            <span
+              key={i}
+              className="px-2.5 py-0.5 rounded-full text-xs font-medium border border-[#0d8a8a]/25 text-[#0d8a8a]"
+              style={{ background: "rgba(13,138,138,0.07)" }}
+            >
+              {name}
+            </span>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   if (isFamily) {
     return (
       <div className="flex items-center gap-3 py-4 px-6 rounded-full border border-[#e8ddd0] bg-white/60 text-[#6b5a4a] text-sm italic w-fit mx-auto transition-all duration-200 hover:scale-105 hover:-translate-y-0.5 hover:shadow-md hover:border-[#e8ddd0]/80">
@@ -157,9 +177,7 @@ export function Milestone({
                       <p className="text-[#6b5a4a]/60 text-xs mt-0.5">
                         {formatDate(startDate)} – {formatDate(endDate)}
                       </p>
-                      {clients && (
-                        <p className="text-[#6b5a4a]/70 text-xs mt-1 italic">{clients}</p>
-                      )}
+                      {clients && renderClients(clients)}
                     </div>
                     {additionalRoles.map((role, i) => (
                       <div key={i}>
@@ -169,9 +187,7 @@ export function Milestone({
                         <p className="text-[#6b5a4a]/60 text-xs mt-0.5">
                           {formatDate(role.startDate)} – {formatDate(role.endDate)}
                         </p>
-                        {role.clients && (
-                          <p className="text-[#6b5a4a]/70 text-xs mt-1 italic">{role.clients}</p>
-                        )}
+                        {role.clients && renderClients(role.clients)}
                       </div>
                     ))}
                   </div>
@@ -213,9 +229,7 @@ export function Milestone({
                 {formatDate(startDate)} – {formatDate(endDate)}
                 {location && ` · ${location}`}
               </p>
-              {clients && (
-                <p className="text-[#6b5a4a]/70 text-xs italic mb-3">{clients}</p>
-              )}
+              {clients && renderClients(clients)}
               {description && (
                 <p className="text-[#6b5a4a] text-sm leading-relaxed mb-1">{description}</p>
               )}
