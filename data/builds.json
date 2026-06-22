@@ -1,11 +1,11 @@
 {
-  "intro": "This is where I get to show, not just tell. What you see here are real problems I stepped into and solved — each one part of building something more durable for the team and the business.",
+  "intro": "This is where I get to show, not just tell. What you see here are real problems I stepped into and solved \u2014 each one part of building something more durable for the team and the business.",
   "workIntro": "Tools, systems, and frameworks I have built at ContextualY to solve real operational problems. These are not hypothetical. Each one came out of a gap I identified, a process I designed, and a change I saw through to completion.",
   "workProjects": [
     {
       "id": "research-pm-agent",
       "title": "Research PM Agent",
-      "subtitle": "Recruiting QA · ContextualY, inc.",
+      "subtitle": "Recruiting QA \u00b7 ContextualY, inc.",
       "badge": "Internal Tool",
       "overview": [
         "As Head of Business Operations at ContextualY, one of my recurring challenges was that every recruiting vendor delivered respondent profiles in their own format: different fields, different terminology, different levels of detail. It made comparison slower, review messier, and client-facing documentation inconsistent. So I built something to fix it.",
@@ -39,12 +39,30 @@
           "id": "impact",
           "label": "Business Impact",
           "items": [
-            { "label": "Faster profile review", "detail": "Reduces time spent manually reformatting and evaluating vendor submissions." },
-            { "label": "Improved consistency", "detail": "Ensures all vendors provide respondent information in a standardized format." },
-            { "label": "Stronger recruiting quality", "detail": "Helps identify incomplete, weak, or potentially misaligned candidates earlier." },
-            { "label": "Cleaner client deliverables", "detail": "Creates a more polished and consistent profile review experience." },
-            { "label": "Reduced operational risk", "detail": "Prevents disclosure of client identity, sensitive qualification logic, and respondent PII." },
-            { "label": "Scalable process foundation", "detail": "A repeatable workflow that grows with the company." }
+            {
+              "label": "Faster profile review",
+              "detail": "Reduces time spent manually reformatting and evaluating vendor submissions."
+            },
+            {
+              "label": "Improved consistency",
+              "detail": "Ensures all vendors provide respondent information in a standardized format."
+            },
+            {
+              "label": "Stronger recruiting quality",
+              "detail": "Helps identify incomplete, weak, or potentially misaligned candidates earlier."
+            },
+            {
+              "label": "Cleaner client deliverables",
+              "detail": "Creates a more polished and consistent profile review experience."
+            },
+            {
+              "label": "Reduced operational risk",
+              "detail": "Prevents disclosure of client identity, sensitive qualification logic, and respondent PII."
+            },
+            {
+              "label": "Scalable process foundation",
+              "detail": "A repeatable workflow that grows with the company."
+            }
           ]
         },
         {
@@ -60,7 +78,7 @@
     {
       "id": "growth-framework",
       "title": "First Growth Framework",
-      "subtitle": "Strategic Framework · ContextualY, inc.",
+      "subtitle": "Strategic Framework \u00b7 ContextualY, inc.",
       "badge": "Strategic Framework",
       "overview": [
         "The company's pipeline had slowed and there was no structured approach to finding new clients. I stepped in and built ContextualY's first growth framework from scratch, turning a period of uncertainty into a clear path forward."
@@ -88,18 +106,33 @@
           ]
         },
         {
-          "id": "results",
-          "label": "The Results",
-          "paragraphs": [
-            "The company had direction when it needed it most. The framework gave the remaining team a shared path forward and shifted the business from reactive to intentional in how it approaches growth. It also surfaced a market positioning angle that had not been articulated before, giving the company a clearer story to tell about what makes it different. The work that came out of that framework created momentum where there had been uncertainty, and the pipeline has since started to recover."
+          "id": "impact",
+          "label": "Business Impact",
+          "items": [
+            {
+              "label": "Clear direction",
+              "detail": "Gave the remaining team a shared path forward at a moment of significant uncertainty."
+            },
+            {
+              "label": "Reactive to intentional",
+              "detail": "Shifted the company from waiting for referrals to actively building toward new clients."
+            },
+            {
+              "label": "Market positioning",
+              "detail": "Surfaced a competitive angle that had not been articulated before, giving the company a clearer story."
+            },
+            {
+              "label": "Pipeline recovery",
+              "detail": "Created momentum where there had been uncertainty, and the pipeline has since started to recover."
+            }
           ]
         }
       ]
     },
     {
       "id": "website-repositioning",
-      "title": "Website Repositioning — SEO & GEO Strategy",
-      "subtitle": "Internal Project · ContextualY, inc.",
+      "title": "Website Repositioning \u2014 SEO & GEO Strategy",
+      "subtitle": "Internal Project \u00b7 ContextualY, inc.",
       "badge": "Internal Project",
       "overview": [
         "With the pipeline already under pressure, I ran a Google search on the company. ContextualY was not coming up at all. I took ownership of a full website repositioning effort, rebuilding the site's structure and content around how clients actually search and what they need to see."
@@ -127,18 +160,33 @@
           ]
         },
         {
-          "id": "results",
-          "label": "The Results",
-          "paragraphs": [
-            "The company is now coming up in search results. The site reads like a business speaking to its market rather than a placeholder explaining itself. It is still a lean, in-house build, but it is doing its job. We continue to refine it as we learn more about what is working."
+          "id": "impact",
+          "label": "Business Impact",
+          "items": [
+            {
+              "label": "Search visibility",
+              "detail": "The company now comes up in search results where it did not appear before."
+            },
+            {
+              "label": "Client-first positioning",
+              "detail": "The site reads like a business speaking to its market, not an internal placeholder explaining itself."
+            },
+            {
+              "label": "Cost-effective execution",
+              "detail": "Delivered a full repositioning as a lean, in-house build without agency spend."
+            },
+            {
+              "label": "Ongoing optimization",
+              "detail": "Built a foundation for continuous refinement as performance data comes in."
+            }
           ]
         }
       ]
     },
     {
       "id": "hubspot-crm",
-      "title": "HubSpot CRM — Sales Pipeline & Outreach Tracking",
-      "subtitle": "Internal System · ContextualY, inc.",
+      "title": "HubSpot CRM \u2014 Sales Pipeline & Outreach Tracking",
+      "subtitle": "Internal System \u00b7 ContextualY, inc.",
       "badge": "Internal System",
       "overview": [
         "The company's sales outreach had no formal tracking system. I designed and implemented a centralized CRM in HubSpot, giving the team pipeline visibility and consistent follow-up for the first time."
@@ -166,10 +214,25 @@
           ]
         },
         {
-          "id": "results",
-          "label": "The Results",
-          "paragraphs": [
-            "The company had pipeline visibility for the first time. Follow-up became consistent and trackable. Missed opportunities decreased, and the team had a foundation for understanding which outreach efforts were actually converting."
+          "id": "impact",
+          "label": "Business Impact",
+          "items": [
+            {
+              "label": "Pipeline visibility",
+              "detail": "The company had a clear view of its active pipeline for the first time."
+            },
+            {
+              "label": "Consistent follow-up",
+              "detail": "Outreach became trackable and follow-up no longer depended on memory."
+            },
+            {
+              "label": "Fewer missed opportunities",
+              "detail": "Contacts and conversations stopped slipping through the gaps."
+            },
+            {
+              "label": "Conversion clarity",
+              "detail": "Gave the team a foundation for understanding which outreach efforts were actually converting."
+            }
           ]
         }
       ]
