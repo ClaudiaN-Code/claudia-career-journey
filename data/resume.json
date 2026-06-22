@@ -22,9 +22,15 @@
       "startDate": "2024-01",
       "endDate": "Present",
       "location": "Remote",
-      "description": "I came in as employee #1, before there were any systems to inherit. I built the company\u2019s entire operational backbone from scratch: AR/AP, project costing, SOW and vendor trackers, SOPs, and the workflows the whole team runs on day to day. I manage end-to-end project operations across 3 to 5 concurrent qualitative research engagements, keeping co-founders, clients, and vendors aligned across a network of 28 vendors and 10 subcontractors. When the pipeline stalled, I built the company\u2019s first growth framework and stood up a HubSpot CRM with pipeline stages and structured follow-up workflows. I also designed a Research PM AI agent using Claude that is projected to save 4 to 8 hours per active recruiting project, and drove WBENC and Microsoft SSPA certifications to completion through multiple re-certification cycles.",
-      "clients": "Clients: Dell, Microsoft, Apple, AMD, LinkedIn, Instacart, Act Blue, Oxfam",
-      "bullets": [],
+      "description": "Recruited as employee #1 to build the entire operational foundation for a newly launched insights firm focused on B2B tech, with no existing systems in place.",
+      "clients": "Clients: Dell, Microsoft, Apple, AMD, LinkedIn, Instacart",
+      "bullets": [
+        "Built the company's full financial and operational infrastructure from scratch, including AR/AP systems, project costing and profitability tracking, SOW and vendor payment trackers, project file structures, SOPs, and scalable workflows in QBO and Microsoft Teams.",
+        "Leads end-to-end project operations across 3 to 5 concurrent qualitative research engagements, managing timelines, budgets, deliverables, and dependencies while keeping co-founders, clients, and vendors aligned throughout.",
+        "Onboarded and continues to manage relationships with 28 vendors and 10 subcontractors, coordinating up to 7 vendors per project across research partners and subcontractors.",
+        "Drove Women's Business Enterprise National Council (WBENC) certification to completion by mapping requirements, establishing ownership, and managing documentation, submission and timelines. Currently supporting 2nd re-certification. Brought the same approach and rigor to Microsoft Supplier Security & Privacy Assurance (SSPA) certification (about to begin 3rd re-certification) and Dell Security and Resiliency Office Security Assessment.",
+        "Identifies and implements AI workflow applications to improve efficiency, communication, and day-to-day execution across the team, while maintaining practical guardrails for responsible team adoption."
+      ],
       "iconCategory": "Operations",
       "emphasis": "now"
     },
@@ -34,8 +40,13 @@
       "startDate": "2022-05",
       "endDate": "2023-06",
       "location": "Remote",
-      "description": "Former Greenberg leaders brought me back to support the B2B Tech business unit through a messy post-acquisition transition, working with three co-leaders and eighteen team members. I brought structure to a team navigating real uncertainty: redesigned leadership meetings, wrote a team handbook from scratch, shaped the Workday rollout around how people actually worked, and launched a crowdsourced team development program with a three-phase curriculum. The role was eliminated in a company-wide restructure, but the structure I built outlasted my seat.",
-      "bullets": [],
+      "description": "Recruited by former Greenberg leaders to support the B2B Tech business unit during a complex post-acquisition transition. Role was eliminated following company-wide restructure.",
+      "bullets": [
+        "Identified lack of structure in weekly leadership meetings and designed a standardized agenda and reporting framework.",
+        "Built a comprehensive team handbook from scratch, covering company structure, leadership, team specialties, and best practices.",
+        "Supported successful Workday rollout by mapping existing workflows and helping shape an adoption process that better fit the team's actual needs.",
+        "Built and led a team training and enablement program, including curriculum design, training calendar development, and delivery."
+      ],
       "iconCategory": "Operations",
       "additionalRoles": [
         {
@@ -51,7 +62,7 @@
       "startDate": "2019-04",
       "endDate": "2021-08",
       "location": null,
-      "description": "Planned leave following the birth of my child.",
+      "description": "Planned family leave following the birth of my child.",
       "bullets": [],
       "iconCategory": "Operations"
     },
@@ -61,16 +72,18 @@
       "startDate": "2017-02",
       "endDate": "2019-03",
       "location": "Emeryville, CA",
-      "description": "I came back to Greenberg as a senior leader, this time managing a team of three direct and one indirect report while running a full client load. I negotiated vendor rates down 20 to 25 percent and turned those relationships into vendor-funded research, a joint webinar, and speaking engagements. I also built the workflow processes, written playbooks, and onboarding documentation that standardized how every new CPM on the team got trained, and wrote the compliance documentation that carried us through a US Bank audit.",
-      "clients": "Clients: Google, Microsoft, Sony Interactive Entertainment",
-      "bullets": [],
+      "description": "Re-hired as a senior team member. As Team Manager, led a team of 3 direct and 1 indirect report.",
+      "bullets": [
+        "Worked closely with the Head of Strategy on resourcing and with Sales on project setup and budget alignment.",
+        "Developed, managed, and maintained workflow processes and written playbooks for qualitative research projects."
+      ],
       "iconCategory": "Operations",
       "additionalRoles": [
         {
           "title": "Sr. Client Program Manager",
           "startDate": "2016-01",
           "endDate": "2017-01",
-          "clients": "Clients: Google, Microsoft, Sony Interactive Entertainment"
+          "clients": "Clients: Google, Microsoft, Visa"
         }
       ]
     },
@@ -80,9 +93,10 @@
       "startDate": "2015-07",
       "endDate": "2016-01",
       "location": "San Francisco, CA",
-      "description": "I inherited a financial services client relationship that had already broken down before I arrived. I audited every outstanding deliverable, reset expectations honestly, and put clearer delivery processes in place. The client\u2019s confidence came back, and the account stayed.",
-      "clients": "Clients: Kaiser Permanente, Delta Dental, PLS Financial Services",
-      "bullets": [],
+      "description": "Clients: Kaiser Permanente, Delta Dental, PLS Financial Services.",
+      "bullets": [
+        "Reduced client attrition for a Financial Services client by auditing deliverables, managing expectations, creating clearer timelines."
+      ],
       "iconCategory": "Marketing"
     },
     {
@@ -91,15 +105,15 @@
       "startDate": "2015-02",
       "endDate": "2015-04",
       "location": "Emeryville, CA",
-      "description": "I managed five to seven concurrent global qualitative and quantitative research projects for Fortune 100 and 500 clients, with budgets running from $80K to $800K. On our first Wells Fargo engagement, a recruiting breakdown had quietly eroded client confidence. I introduced a call-logging process, traced the root cause to the client side, delivered the project on time, and turned a shaky start into a repeat relationship.",
-      "clients": "Clients: Google, Microsoft, Visa, Wells Fargo, Sony PlayStation, CNBC, Ticketmaster",
+      "description": "Clients: Google, Microsoft, Visa, Wells Fargo, Sony PlayStation, CNBC, Ticketmaster.",
       "bullets": [],
       "iconCategory": "Operations",
       "additionalRoles": [
         {
           "title": "Project Manager",
           "startDate": "2013-09",
-          "endDate": "2015-01"
+          "endDate": "2015-01",
+          "description": "Built project budgets that balanced competitive pricing with gross-profit margin targets. Delivered a high volume of projects on time and on or under budget through strong cross-functional coordination."
         }
       ]
     },
@@ -109,9 +123,12 @@
       "startDate": "2010-10",
       "endDate": "2013-04",
       "location": "Newark, CA",
-      "description": "Former colleagues recruited me as their first hire to build the operational foundation for a newly launched multicultural advertising agency from scratch. I built the billing, retainer tracking, and vendor payment systems across 20 to 30 media partners and contractors, and coordinated vendor logistics for client events ranging from 1,000 to 8,000 attendees. It was my first employee #1 moment, and it taught me how much I love being the person who turns a startup\u2019s blank page into something that actually runs.",
-      "clients": "Clients: AAA Northern California, River Rock Casino, Chavez Supermarket, Golden Gate Fields",
-      "bullets": [],
+      "description": "Clients: AAA Northern California, River Rock Casino, Chavez Supermarket, Golden Gate Fields.",
+      "bullets": [
+        "Built foundational systems from scratch, including client billing, retainer tracking, and vendor payment systems across 20-30 media partners.",
+        "Contributed to 133% client growth.",
+        "Key role in events ranging from 1,000 to 15,000 attendees."
+      ],
       "iconCategory": "Marketing"
     },
     {
@@ -119,8 +136,8 @@
       "title": "Account Coordinator",
       "startDate": "2010-03",
       "endDate": "2010-09",
-      "location": "Corte Madera, CA",
-      "description": "A short stint supporting the account director at a multicultural advertising agency. It was brief, but it is where the colleagues who would later recruit me to A2Z first saw how I work.",
+      "location": null,
+      "description": "Supported account director for multicultural full-service advertising agency. Recruited by A2Z agency partners (formerly from Turnstile) to direct day-to-day startup operations and client service for full-service multicultural advertising agency.",
       "clients": "Clients: River Rock Casino, Chavez Supermarket",
       "bullets": [],
       "iconCategory": "Marketing"
@@ -131,8 +148,14 @@
       "startDate": "2008-02",
       "endDate": "2009-05",
       "location": "Kabul, Afghanistan",
-      "description": "This is where it all started, and it shaped everything that came after. Roshan served over three million subscribers across 230 cities, and the environment, international, fast-moving, deeply multicultural, was unlike anything I had known. It taught me early that getting work done is never just about tasks and timelines. It is about listening first, earning trust, and understanding how people actually work together. When the moment called for it, I stepped up to lead a $700K youth segment campaign alongside the CMO, managing global agency partners including Grey Group and JWT, aligning five departments, and delivering a 40 percent increase in monthly acquisition and a record 230,000 activations.",
-      "bullets": [],
+      "description": "Joined Roshan in Kabul to support department operations and major advertising campaigns across youth, mass market, and business segments. One of the most formative roles of my career, both professionally and personally, working in a truly international and multicultural environment serving over 3 million subscribers across 230 cities. This role shaped how I approach cross-functional coordination, adaptability, and trust-building in complex settings.",
+      "bullets": [
+        "Led a $700K youth segment campaign, delivering a 40% increase in monthly acquisition and 230,000 activations.",
+        "Supported large-scale advertising campaigns across youth, mass market, and business segments.",
+        "Worked with global agency partners including Grey Group and JWT, as well as in-house creative teams, on campaign planning and execution.",
+        "Coordinated across sales, legal, finance, and customer care to support compliant campaign rollout.",
+        "Managed execution across TV, radio, print, out-of-home, mobile, and direct marketing channels."
+      ],
       "iconCategory": "Marketing",
       "emphasis": "early"
     }
