@@ -158,15 +158,38 @@ export function Milestone({
                 ? "Present"
                 : [...allEndDates].sort().reverse()[0];
 
+              const allClientNames = [
+                ...(clients ? clients.replace(/^Clients:\s*/i, "").split(",").map(s => s.trim()) : []),
+                ...additionalRoles.flatMap(r => r.clients ? r.clients.replace(/^Clients:\s*/i, "").split(",").map(s => s.trim()) : []),
+              ].filter(Boolean).filter((v, i, arr) => arr.indexOf(v) === i);
+
               return (
                 <>
                   <p className={`font-semibold text-sm mb-0.5 text-[#c4622d]`}>
                     {company}
                   </p>
-                  <p className="text-[#6b5a4a]/60 text-xs mb-3">
+                  <p className="text-[#6b5a4a]/60 text-xs mb-1">
                     {formatDate(overallStart)} – {formatDate(overallEnd)}
                     {location && ` · ${location}`}
                   </p>
+
+                  {/* Clients shown once under company name */}
+                  {allClientNames.length > 0 && (
+                    <div className="mt-2 mb-3">
+                      <p className="text-[#0d8a8a] font-bold text-xs tracking-widest uppercase mb-1.5">Clients</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {allClientNames.map((name, i) => (
+                          <span
+                            key={i}
+                            className="px-2.5 py-0.5 rounded-full text-xs font-medium border border-[#0d8a8a]/25 text-[#0d8a8a]"
+                            style={{ background: "rgba(13,138,138,0.07)" }}
+                          >
+                            {name}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {/* All titles stacked together */}
                   <div className="mb-4 space-y-3">
@@ -177,7 +200,6 @@ export function Milestone({
                       <p className="text-[#6b5a4a]/60 text-xs mt-0.5">
                         {formatDate(startDate)} – {formatDate(endDate)}
                       </p>
-                      {clients && renderClients(clients)}
                     </div>
                     {additionalRoles.map((role, i) => (
                       <div key={i}>
@@ -187,7 +209,6 @@ export function Milestone({
                         <p className="text-[#6b5a4a]/60 text-xs mt-0.5">
                           {formatDate(role.startDate)} – {formatDate(role.endDate)}
                         </p>
-                        {role.clients && renderClients(role.clients)}
                       </div>
                     ))}
                   </div>
