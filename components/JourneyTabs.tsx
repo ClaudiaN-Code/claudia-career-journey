@@ -160,57 +160,38 @@ export function JourneyTabs({
     <section id="journey" className="pt-10 pb-16 px-4" style={{ background: "#f5e8d0" }}>
       <div className="max-w-3xl mx-auto">
 
-        {/* Mobile: black pill bubbles */}
-        <div className="flex flex-wrap justify-center gap-2 mb-6 md:hidden">
-          {TABS.map((tab) => (
-            <motion.button
-              key={`mob-${tab}`}
-              onClick={() => setActive(tab)}
-              whileHover={{ scale: 1.08, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 380, damping: 18 }}
-              className="px-4 py-1.5 rounded-full text-xs font-semibold cursor-pointer"
-              style={{
-                background: active === tab ? "#c4622d" : "#1a1410",
-                color: "#faf9f6",
-              }}
+               {/* Folder-style tab navigation */}
+        <div className="relative mb-10 -mx-4 px-4">
+          <div className="overflow-x-auto pb-1">
+            <div
+              className="flex w-max min-w-full items-end gap-1 border-b-2"
+              style={{ borderColor: "#c4b49a" }}
             >
-              {tab}
-            </motion.button>
-          ))}
-        </div>
-        <div className="mb-8 md:hidden" style={{ height: "2px", background: "linear-gradient(to right, transparent, rgba(196,98,45,0.5) 50%, transparent)", borderRadius: "9999px" }} />
+              {TABS.map((tab) => {
+                const isActive = active === tab;
 
-        {/* Desktop: underline tabs with hover animation */}
-        <div className="pt-2 hidden md:block">
-          <div
-            className="flex justify-between border-b mb-10"
-            style={{ borderColor: "#d4c4b0" }}
-          >
-            {TABS.map((tab) => (
-              <motion.button
-                key={`desk-${tab}`}
-                onClick={() => setActive(tab)}
-                whileHover={{ y: -5, scale: 1.13, color: "#c4622d" }}
-                whileTap={{ scale: 0.96 }}
-                transition={{ type: "spring", stiffness: 380, damping: 18 }}
-                className="relative pb-3 text-sm font-medium whitespace-nowrap cursor-pointer"
-                style={{ color: active === tab ? "#c4622d" : "#6b5a4a" }}
-              >
-                {tab}
-                {active === tab && (
-                  <motion.div
-                    layoutId="tab-underline"
-                    className="absolute bottom-0 left-0 right-0 z-10"
-                    style={{ height: "2px", background: "#c4622d", borderRadius: "9999px" }}
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                  />
-                )}
-              </motion.button>
-            ))}
+                return (
+                  <button
+                    key={tab}
+                    type="button"
+                    onClick={() => setActive(tab)}
+                    className="relative -mb-[2px] shrink-0 whitespace-nowrap rounded-t-md border-2 px-3 py-2 text-xs font-semibold transition-colors duration-150 sm:px-4 sm:text-sm"
+                    style={{
+                      borderColor: "#c4b49a",
+                      borderBottomColor: isActive ? "#f5e8d0" : "#c4b49a",
+                      background: isActive ? "#f5e8d0" : "#ddc9a3",
+                      color: isActive ? "#c4622d" : "#6b5a4a",
+                      boxShadow: isActive ? "0 -2px 8px rgba(0,0,0,0.07)" : "none",
+                      zIndex: isActive ? 2 : 1,
+                    }}
+                  >
+                    {tab}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
-
         {/* About */}
         {active === "About" && (
           <div className="space-y-10">
